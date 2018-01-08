@@ -17,9 +17,9 @@ The way I want to provide this information is by making a datamap of the EU whic
 ## Prerequisites
 ### Data sources
 * [Internet access data](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=isoc_ci_it_en2&lang=en)
-** This data will need to be filtered and processed to be useable.
+    * This data will need to be filtered and processed to be useable.
 * [GDP](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD)
-** One example of economic data. Is easily useable.
+    * One example of economic data. Is easily useable.
 * [Happy Planet Index](http://happyplanetindex.org/countries)
 
 ### External components
