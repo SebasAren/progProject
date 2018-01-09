@@ -2,17 +2,19 @@
 Name: Sebastiaan Arendsen
 
 ## Problem statement
-I want to visualize the importance of internet access to the welfare of a country. In these modern times internet access is vital to the productivity in a country and their access to information. Welfare of a country can be quantized in different ways. I'd like to find out what the main factors influenced by the quality of internet connections in the EU. I hope governments would be interested in this information so as to supply better internet (when I'm there on holiday).
+I want to visualize the importance of internet access to the welfare of a country. In these modern times internet access is vital to the productivity in a country and their access to information. Welfare of a country can be quantized in different ways. I'd like to find out what the main factors influenced by the quality of internet connections in the world. I hope governments would be interested in this information so as to supply better internet (when I'm there on holiday).
 
 ## Solution
-The way I want to provide this information is by making a datamap of the EU which is interactive as shown in the figure in docs/sketch.png.
+The way I want to provide this information is by making a datamap of the orld  which is interactive as shown in the figure in docs/sketch.png.
 
 ### Main features
-* A map of the EU which can be obtained from http://datamaps.github.io(MVP)
-* A slider with which to change the year shown on the map.
-* Map should be colored based on the average internet connection in that country in that year.(MVP)
+* A map of the world which can be obtained from http://datamaps.github.io (MVP)
+* A way to select which aspect of internet quality is shown on the map.
+* Map should be colored based on the selected quality parameter.(MVP)
 * When country is clicked, data of that country should be added to the plots below.(MVP: Version in which it isn't added but just changed to this country)
 * Plots should be able to change between different datasets (e.g. GDP, Happy Planet Index, other welfare indexes) (MVP)
+* Multiple views should be visible to in which users can place certain user selected datasets (e.g. GDP, HPI,[ISEW](https://en.wikipedia.org/wiki/Index_of_Sustainable_Economic_Welfare) and other factors) (Extra: Give users complete freedom over which data is plotted in which view and possibly even the type of graph needed.)
+
 
 ## Prerequisites
 ### Data sources
@@ -27,6 +29,7 @@ The way I want to provide this information is by making a datamap of the EU whic
 ### External components
 * jQuery: for manipulation of the DOM.
 * d3-tip: easy way to make a tooltip in D3.
+* Bootstrap: for easy customizable layout.
 
 ### Similar visualization
 A similiar visualization is Happy Planet Index. It has a map in which the colors represent a quantity of the measured index. Clicking on the country gives more information about the country.
