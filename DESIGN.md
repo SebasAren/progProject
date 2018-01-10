@@ -6,7 +6,7 @@
 Data sources should be indexed on the country they belong to. All of these datasets are already ordered on the country theey belong to, so this should be fairly easy.
 
 ## Technical components
-![](doc/diagram.jpg)
+![](doc/diagram.jpg | width=100)
 The idea is that users first select a variable about internet quality with which the map will be colored. After this they can click (perhaps drag) the country to add it to both plots below the map.
 
 The first plot will be a grouped bar chart in which each group represents a selected country. Users can select which variables about welfare they want to show in the bar chart (perhaps limited to avoid scaling issues).
