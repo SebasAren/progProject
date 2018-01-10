@@ -7,15 +7,11 @@ body {
     height: 500px;
     padding: 5px;
 }
-.left-plot {
+.plot {
     float: left;
-    width: 45%;    
-    height: 400px;
-    outline: #000000 dotted thick;
-}
-.right-plot {
-    float: right;
-    width: 45%;
-    height: 400px;
-    outline: #000000 dotted thick;
+    width: 50%;    
+    height: 800px;
+
+    /* delete this */
+    outline: #000000 dotted;
 }

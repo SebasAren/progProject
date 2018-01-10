@@ -6,10 +6,6 @@
  */
 $(function() {
     var map = new Datamap({
-        // for some reason jquery is not allowed here
         element: document.getElementById('map')
     });
-    //$('.btn').click(function(e) {
-        //alert(e)
-    //})
 });
