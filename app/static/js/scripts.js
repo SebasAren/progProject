@@ -5,8 +5,10 @@
  * All scripts used in the visualization are defined here.
  */
 
-'use strict';
+// list of buttons that need activity
+var buttons = ['map', 'left', 'right'];
 
+// on DOM load this will be executed (jQuery magic)
 $(function() {
 
     // init the map
@@ -14,48 +16,23 @@ $(function() {
         element: document.getElementById('map'),
         responsive: true
     });
-    $('.map-btn').click(function() {
-        controlMapButtons($(this));
-    });
 
-    $('.left-btn').click(function() {
-        controlLeftButtons($(this));
+    // create listeners fot all buttons defined in buttons
+    $.each(buttons, function(i, button) {
+        $('.' + button + '-btn').click(function() {
+            controlButtons(button)($(this));
+        });
     });
-    
-    $('.right-btn').click(function() {
-        controlRightButtons($(this));
-    });
-
-    // add drag functionality to map
-    //var drag = d3.drag();
-    //d3.selectAll('.datamaps-subunit')
-        //.call(drag.on('start', console.log('Yes')));
 });
 
-function controlMapButtons(input) {
-    console.log(input.html());
-    $.each($('.map-btn.btn-success'), function() {
-        $(this).attr('class', 'btn map-btn');
-    });
-    input.attr('class', 'btn-success map-btn'); 
-}
-
-function controlLeftButtons(input) {
-    console.log(input.html());
-    $.each($('.left-btn.btn-success'), function() {
-        $(this).attr('class', 'btn left-btn');
-    });
-    input.attr('class', 'btn-success left-btn'); 
-}
-
-function controlRightButtons(input) {
-    console.log(input.html());
-    $.each($('.right-btn.btn-success'), function() {
-        $(this).attr('class', 'btn right-btn');
-    });
-    input.attr('class', 'btn-success right-btn'); 
-}
-
-function updateMap() {
-
-}
+/* Function to control the face of the buttons and how they look.
+ * Changes the classes to other bootstrap states.
+ */
+var controlButtons = function(type) {
+    return function(input) {
+        $.each($('.' + type + '-btn.btn-success'), function() {
+            $(this).attr('class', 'btn ' + type + '-btn');
+        });
+        input.attr('class', 'btn btn-success ' + type + '-btn');
+    };
+};
