@@ -9,9 +9,14 @@ body {
 }
 .plot {
     float: left;
-    width: 50%;    
-    height: 800px;
-
-    /* delete this */
-    outline: #000000 dotted;
+    width: 50%;
+    height 500px;
+}
+.plot img {
+    width: 100%;
+    position: top;
+}
+.plot svg {
+    width: 100%;
+    position: top;
 }

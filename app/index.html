@@ -1,39 +1,49 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Internet speeds in the world</title>
+        <title>Internet connectivity around the world</title>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+        <script src="https://d3js.org/d3-drag.v1.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
         <script src="static/js/datamaps.world.min.js"></script>
         <script src="static/js/scripts.js"></script>
-        <!--<link href="http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css" rel="stylesheet">-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"/>
         <link href="static/css/main.css" rel="stylesheet">
     </head>
     <body>
         <div class="jumbotron text-center">
-            <h1>Data map</h1>
-            <p>Leuk</p>
+            <h1>Internet connectivity around the world</h1>
+            <p>Economic factors</p>
         </div>
-        <div class="container text-center">
-            <div class="btn-group-lg">
-                <button type="button" class="btn">First</button>
-                <button type="button" class="btn">Second</button>
-                <button type="button" class="btn">Third</button>
-                <button type="button" class="btn">Fourth</button>
-            </div>
+        <div class="container-fluid btn-group-lg text-center">
+            <button type="button" class="btn map-btn">Speed</button>
+            <button type="button" class="btn map-btn">Mobile speed</button>
+            <button type="button" class="btn map-btn">Electricity access</button>
+            <button type="button" class="btn map-btn">Percentage internet users</button>
         </div>
         <!--Container for the data map-->
         <div class="container-fluid" id="map"></div>
         <!--Below this will be the containers for the linked plots-->
         <div class="container-fluid">
-            <div class="container plot"></div>
-            <div class="container plot"></div>
+            <div class="container plot">
+                <div class="container-fluid btn-group-sm text-center">
+                    <button type="button" class="btn left-btn">GDP</button>
+                    <button type="button" class="btn left-btn">Literacy</button>
+                    <button type="button" class="btn left-btn">Democracy Index</button>
+                    <button type="button" class="btn left-btn">Years of schooling</button>
+                </div>
+                <img class="img-responsive" src="images/barchart.png"/>
+            </div>
+            <div class="container plot">
+                <div class="container-fluid btn-group-sm text-center">
+                    <button type="button" class="btn right-btn">Happy planet index</button>
+                    <button type="button" class="btn right-btn">Sad planet index?</button>
+                </div>
+                <img class="img-responsive" src="images/scatter.png"/>
+            </div>
         </div>
     </body>
 </html>

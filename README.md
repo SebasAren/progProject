@@ -13,6 +13,7 @@ The way I want to provide this information is by making a datamap of the orld  w
 * Map should be colored based on the selected quality parameter.(MVP)
 * Plots should be able to change between different datasets (e.g. GDP, Happy Planet Index, other welfare indexes) (MVP)
 * Multiple views should be visible to in which users can place certain user selected datasets (e.g. GDP, HPI, [ISEW](https://en.wikipedia.org/wiki/Index_of_Sustainable_Economic_Welfare) and other factors) (Extra: Give users complete freedom over which data is plotted in which view and possibly even the type of graph needed.)
+* [Scatter plot with regression line?](https://bl.ocks.org/ctufts/298bfe4b11989960eeeecc9394e9f118)
 
 ## Prerequisites
 ### Data sources
