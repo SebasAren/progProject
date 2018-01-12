@@ -8,7 +8,7 @@
 // list of buttons that need activity
 var buttons = ['map', 'left', 'right'];
 
-// on DOM load this will be executed (jQuery magic)
+// on DOM load this will be executed
 $(function() {
 
     // init the map
@@ -24,10 +24,11 @@ $(function() {
         });
     });
 
-    $('.datamaps-subunit').mousedown(function(e) {
-        dragController($(this), e);
-        $(document.body).mouseup(function(e) {
-            pickController($(this), e);
+    $('.datamaps-subunit').mousedown(function(event) {
+        dragController($(this), event);
+        $(document.body).mouseup(function(event) {
+            $('.drag-div').remove();
+            pickController($(this), event);
         });
     });
 }); 
@@ -44,6 +45,7 @@ var controlButtons = function(type) {
     };
 };
 
+// function to control the draggable
 function dragController(clicked, country) {
 
     // movement manager of the new element
@@ -53,48 +55,53 @@ function dragController(clicked, country) {
             'top': position.pageY - element[0].clientHeight / 2
         });
     }
+
+    // highlights the plot on which the draggable is placed
     function highlightPlot(position, element) {
+
+        // check wether position of mouse is above plot
         if (position.pageX > element.offset().left &&
         position.pageX < (element.offset().left + element.width())
         && position.pageY > element.offset().top
         && position.pageY < element.offset().top
         + element.height()) {
+
+            // change the style of the plot
             element.css({
                 'outline': '#00FF00 dotted thick'
             });
         }
+
+        // reset if not on plot
         else {
             element.css({
                 'outline': 'none' 
             });
         }
     }
-    console.log(country);
     
-    var div = $('<div class="drag-div"/>')
+    // create div to be draggable
+    $('<div class="drag-div"/>')
         .css({
             'left': (country.pageX) + 'px',
             'top': (country.pageY) + 'px',
         })
         .appendTo($('body'))
         .html('Test')
+
         // functions needed to control the new element
         .mousemove(function(event) {
+
+            // move the element
             moveElement(event, $(this));
-            var leftElement = $('.left-plot');
-            var rightElement = $('.right-plot');
-            highlightPlot(event, leftElement);
-            highlightPlot(event, rightElement);
-        })
-        .mouseleave(function(event) {
-            moveElement(event, $(this));
-        })
-        .mouseout(function(event) {
-            moveElement(event, $(this));
+
+            // check if mouse is above one of the plots
+            highlightPlot(event, $('.left-plot'));
+            highlightPlot(event, $('.right-plot'));
         });
 }
 
+// triggered when the draggable is droppped
 function pickController(clicked, country) {
-    console.log('trigger');
-    $('.drag-div').remove();
+    return undefined;
 }
