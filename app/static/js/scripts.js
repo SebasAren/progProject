@@ -11,6 +11,7 @@ var buttons = ['map', 'left', 'right'];
 // on DOM load this will be executed
 $(function() {
 
+
     // init the map
     var map = new Datamap({
         element: document.getElementById('map'),
@@ -24,15 +25,36 @@ $(function() {
         });
     });
 
+    document.oncontextmenu = function() { return false; };
+    // triggered on mousedown on country in the datamap
     $('.datamaps-subunit').mousedown(function(event) {
-        dragController($(this), event);
-        $(document).off('mouseup');
-        $(document).mouseup(function(event) {
-            var country = $('.drag-div').html();
-            $('.drag-div').remove();
-            pickController(country , event);
+
+        if (event.button == 2) {
+
+        }
+
+        else {
+
+            // control the drag behaviour of the 'map element'
+            dragController($(this), event);
+
+            // remove mouseup listener from document to stop double triggers
             $(document).off('mouseup');
-        });
+
+            // reapply mouseup listener
+            $(document).mouseup(function(event) {
+
+                // get country
+                var country = $('.drag-div').html();
+
+                // remove draggable div and handle data transfer
+                $('.drag-div').remove();
+                pickController(country);
+
+                // remove listener again
+                $(document).off('mouseup');
+            });
+        }
     });
 }); 
 
@@ -78,7 +100,7 @@ function dragController(clicked, country) {
             element.removeClass('hover-plot');
         }
     }
-    
+
     // create div to be draggable
     $('<div class="drag-div"/>')
         .css({
@@ -101,7 +123,9 @@ function dragController(clicked, country) {
 }
 
 // triggered when the draggable is droppped
-function pickController(country, position) {
+function pickController(country) {
     console.log($('.hover-plot'));
+    console.log($('.hover-plot').children[1])
+    console.log(country);
     $('.hover-plot').removeClass('hover-plot');
 }

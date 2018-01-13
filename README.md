@@ -1,6 +1,9 @@
 # Programmeerproject
 Name: Sebastiaan Arendsen
 
+## Site link
+[Github](https://flewtje.github.io/progProject/app/index.html)
+
 ## Problem statement
 I want to visualize the importance of internet access to the welfare of a country. In these modern times internet access is vital to the productivity in a country and their access to information. Welfare of a country can be quantized in different ways. I'd like to find out what the main factors influenced by the quality of internet connections in the world. I hope governments would be interested in this information so as to supply better internet (when I'm there on holiday).
 
