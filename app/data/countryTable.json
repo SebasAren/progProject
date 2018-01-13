@@ -1,0 +1,1496 @@
+{
+   "COUNTRY": {
+      "FIELD2": "A2 (ISO)",
+      "FIELD3": "A3 (UN)",
+      "FIELD4": "NUM (UN)",
+      "FIELD5": "DIALING CODE"
+   },
+   "Afghanistan": {
+      "FIELD2": "AF",
+      "FIELD3": "AFG",
+      "FIELD4": "4",
+      "FIELD5": "93"
+   },
+   "Albania": {
+      "FIELD2": "AL",
+      "FIELD3": "ALB",
+      "FIELD4": "8",
+      "FIELD5": "355"
+   },
+   "Algeria": {
+      "FIELD2": "DZ",
+      "FIELD3": "DZA",
+      "FIELD4": "12",
+      "FIELD5": "213"
+   },
+   "American Samoa": {
+      "FIELD2": "AS",
+      "FIELD3": "ASM",
+      "FIELD4": "16",
+      "FIELD5": "1-684"
+   },
+   "Andorra": {
+      "FIELD2": "AD",
+      "FIELD3": "AND",
+      "FIELD4": "20",
+      "FIELD5": "376"
+   },
+   "Angola": {
+      "FIELD2": "AO",
+      "FIELD3": "AGO",
+      "FIELD4": "24",
+      "FIELD5": "244"
+   },
+   "Anguilla": {
+      "FIELD2": "AI",
+      "FIELD3": "AIA",
+      "FIELD4": "660",
+      "FIELD5": "1-264"
+   },
+   "Antarctica": {
+      "FIELD2": "AQ",
+      "FIELD3": "ATA",
+      "FIELD4": "10",
+      "FIELD5": "672"
+   },
+   "Antigua and Barbuda": {
+      "FIELD2": "AG",
+      "FIELD3": "ATG",
+      "FIELD4": "28",
+      "FIELD5": "1-268"
+   },
+   "Argentina": {
+      "FIELD2": "AR",
+      "FIELD3": "ARG",
+      "FIELD4": "32",
+      "FIELD5": "54"
+   },
+   "Armenia": {
+      "FIELD2": "AM",
+      "FIELD3": "ARM",
+      "FIELD4": "51",
+      "FIELD5": "374"
+   },
+   "Aruba": {
+      "FIELD2": "AW",
+      "FIELD3": "ABW",
+      "FIELD4": "533",
+      "FIELD5": "297"
+   },
+   "Australia": {
+      "FIELD2": "AU",
+      "FIELD3": "AUS",
+      "FIELD4": "36",
+      "FIELD5": "61"
+   },
+   "Austria": {
+      "FIELD2": "AT",
+      "FIELD3": "AUT",
+      "FIELD4": "40",
+      "FIELD5": "43"
+   },
+   "Azerbaijan": {
+      "FIELD2": "AZ",
+      "FIELD3": "AZE",
+      "FIELD4": "31",
+      "FIELD5": "994"
+   },
+   "Bahamas": {
+      "FIELD2": "BS",
+      "FIELD3": "BHS",
+      "FIELD4": "44",
+      "FIELD5": "1-242"
+   },
+   "Bahrain": {
+      "FIELD2": "BH",
+      "FIELD3": "BHR",
+      "FIELD4": "48",
+      "FIELD5": "973"
+   },
+   "Bangladesh": {
+      "FIELD2": "BD",
+      "FIELD3": "BGD",
+      "FIELD4": "50",
+      "FIELD5": "880"
+   },
+   "Barbados": {
+      "FIELD2": "BB",
+      "FIELD3": "BRB",
+      "FIELD4": "52",
+      "FIELD5": "1-246"
+   },
+   "Belarus": {
+      "FIELD2": "BY",
+      "FIELD3": "BLR",
+      "FIELD4": "112",
+      "FIELD5": "375"
+   },
+   "Belgium": {
+      "FIELD2": "BE",
+      "FIELD3": "BEL",
+      "FIELD4": "56",
+      "FIELD5": "32"
+   },
+   "Belize": {
+      "FIELD2": "BZ",
+      "FIELD3": "BLZ",
+      "FIELD4": "84",
+      "FIELD5": "501"
+   },
+   "Benin": {
+      "FIELD2": "BJ",
+      "FIELD3": "BEN",
+      "FIELD4": "204",
+      "FIELD5": "229"
+   },
+   "Bermuda": {
+      "FIELD2": "BM",
+      "FIELD3": "BMU",
+      "FIELD4": "60",
+      "FIELD5": "1-441"
+   },
+   "Bhutan": {
+      "FIELD2": "BT",
+      "FIELD3": "BTN",
+      "FIELD4": "64",
+      "FIELD5": "975"
+   },
+   "Bolivia": {
+      "FIELD2": "BO",
+      "FIELD3": "BOL",
+      "FIELD4": "68",
+      "FIELD5": "591"
+   },
+   "Bonaire": {
+      "FIELD2": "BQ",
+      "FIELD3": "BES",
+      "FIELD4": "535",
+      "FIELD5": "599"
+   },
+   "Bosnia and Herzegovina": {
+      "FIELD2": "BA",
+      "FIELD3": "BIH",
+      "FIELD4": "70",
+      "FIELD5": "387"
+   },
+   "Botswana": {
+      "FIELD2": "BW",
+      "FIELD3": "BWA",
+      "FIELD4": "72",
+      "FIELD5": "267"
+   },
+   "Bouvet Island": {
+      "FIELD2": "BV",
+      "FIELD3": "BVT",
+      "FIELD4": "74",
+      "FIELD5": "47"
+   },
+   "Brazil": {
+      "FIELD2": "BR",
+      "FIELD3": "BRA",
+      "FIELD4": "76",
+      "FIELD5": "55"
+   },
+   "British Indian Ocean Territory": {
+      "FIELD2": "IO",
+      "FIELD3": "IOT",
+      "FIELD4": "86",
+      "FIELD5": "246"
+   },
+   "Brunei Darussalam": {
+      "FIELD2": "BN",
+      "FIELD3": "BRN",
+      "FIELD4": "96",
+      "FIELD5": "673"
+   },
+   "Bulgaria": {
+      "FIELD2": "BG",
+      "FIELD3": "BGR",
+      "FIELD4": "100",
+      "FIELD5": "359"
+   },
+   "Burkina Faso": {
+      "FIELD2": "BF",
+      "FIELD3": "BFA",
+      "FIELD4": "854",
+      "FIELD5": "226"
+   },
+   "Burundi": {
+      "FIELD2": "BI",
+      "FIELD3": "BDI",
+      "FIELD4": "108",
+      "FIELD5": "257"
+   },
+   "Cambodia": {
+      "FIELD2": "KH",
+      "FIELD3": "KHM",
+      "FIELD4": "116",
+      "FIELD5": "855"
+   },
+   "Cameroon": {
+      "FIELD2": "CM",
+      "FIELD3": "CMR",
+      "FIELD4": "120",
+      "FIELD5": "237"
+   },
+   "Canada": {
+      "FIELD2": "CA",
+      "FIELD3": "CAN",
+      "FIELD4": "124",
+      "FIELD5": "1"
+   },
+   "Cape Verde": {
+      "FIELD2": "CV",
+      "FIELD3": "CPV",
+      "FIELD4": "132",
+      "FIELD5": "238"
+   },
+   "Cayman Islands": {
+      "FIELD2": "KY",
+      "FIELD3": "CYM",
+      "FIELD4": "136",
+      "FIELD5": "1-345"
+   },
+   "Central African Republic": {
+      "FIELD2": "CF",
+      "FIELD3": "CAF",
+      "FIELD4": "140",
+      "FIELD5": "236"
+   },
+   "Chad": {
+      "FIELD2": "TD",
+      "FIELD3": "TCD",
+      "FIELD4": "148",
+      "FIELD5": "235"
+   },
+   "Chile": {
+      "FIELD2": "CL",
+      "FIELD3": "CHL",
+      "FIELD4": "152",
+      "FIELD5": "56"
+   },
+   "China": {
+      "FIELD2": "CN",
+      "FIELD3": "CHN",
+      "FIELD4": "156",
+      "FIELD5": "86"
+   },
+   "Christmas Island": {
+      "FIELD2": "CX",
+      "FIELD3": "CXR",
+      "FIELD4": "162",
+      "FIELD5": "61"
+   },
+   "Cocos (Keeling) Islands": {
+      "FIELD2": "CC",
+      "FIELD3": "CCK",
+      "FIELD4": "166",
+      "FIELD5": "61"
+   },
+   "Colombia": {
+      "FIELD2": "CO",
+      "FIELD3": "COL",
+      "FIELD4": "170",
+      "FIELD5": "57"
+   },
+   "Comoros": {
+      "FIELD2": "KM",
+      "FIELD3": "COM",
+      "FIELD4": "174",
+      "FIELD5": "269"
+   },
+   "Congo": {
+      "FIELD2": "CG",
+      "FIELD3": "COG",
+      "FIELD4": "178",
+      "FIELD5": "242"
+   },
+   "Democratic Republic of the Congo": {
+      "FIELD2": "CD",
+      "FIELD3": "COD",
+      "FIELD4": "180",
+      "FIELD5": "243"
+   },
+   "Cook Islands": {
+      "FIELD2": "CK",
+      "FIELD3": "COK",
+      "FIELD4": "184",
+      "FIELD5": "682"
+   },
+   "Costa Rica": {
+      "FIELD2": "CR",
+      "FIELD3": "CRI",
+      "FIELD4": "188",
+      "FIELD5": "506"
+   },
+   "Croatia": {
+      "FIELD2": "HR",
+      "FIELD3": "HRV",
+      "FIELD4": "191",
+      "FIELD5": "385"
+   },
+   "Cuba": {
+      "FIELD2": "CU",
+      "FIELD3": "CUB",
+      "FIELD4": "192",
+      "FIELD5": "53"
+   },
+   "Curacao": {
+      "FIELD2": "CW",
+      "FIELD3": "CUW",
+      "FIELD4": "531",
+      "FIELD5": "599"
+   },
+   "Cyprus": {
+      "FIELD2": "CY",
+      "FIELD3": "CYP",
+      "FIELD4": "196",
+      "FIELD5": "357"
+   },
+   "Czech Republic": {
+      "FIELD2": "CZ",
+      "FIELD3": "CZE",
+      "FIELD4": "203",
+      "FIELD5": "420"
+   },
+   "Cote d'Ivoire": {
+      "FIELD2": "CI",
+      "FIELD3": "CIV",
+      "FIELD4": "384",
+      "FIELD5": "225"
+   },
+   "Denmark": {
+      "FIELD2": "DK",
+      "FIELD3": "DNK",
+      "FIELD4": "208",
+      "FIELD5": "45"
+   },
+   "Djibouti": {
+      "FIELD2": "DJ",
+      "FIELD3": "DJI",
+      "FIELD4": "262",
+      "FIELD5": "253"
+   },
+   "Dominica": {
+      "FIELD2": "DM",
+      "FIELD3": "DMA",
+      "FIELD4": "212",
+      "FIELD5": "1-767"
+   },
+   "Dominican Republic": {
+      "FIELD2": "DO",
+      "FIELD3": "DOM",
+      "FIELD4": "214",
+      "FIELD5": "1-809,1-829,1-849"
+   },
+   "Ecuador": {
+      "FIELD2": "EC",
+      "FIELD3": "ECU",
+      "FIELD4": "218",
+      "FIELD5": "593"
+   },
+   "Egypt": {
+      "FIELD2": "EG",
+      "FIELD3": "EGY",
+      "FIELD4": "818",
+      "FIELD5": "20"
+   },
+   "El Salvador": {
+      "FIELD2": "SV",
+      "FIELD3": "SLV",
+      "FIELD4": "222",
+      "FIELD5": "503"
+   },
+   "Equatorial Guinea": {
+      "FIELD2": "GQ",
+      "FIELD3": "GNQ",
+      "FIELD4": "226",
+      "FIELD5": "240"
+   },
+   "Eritrea": {
+      "FIELD2": "ER",
+      "FIELD3": "ERI",
+      "FIELD4": "232",
+      "FIELD5": "291"
+   },
+   "Estonia": {
+      "FIELD2": "EE",
+      "FIELD3": "EST",
+      "FIELD4": "233",
+      "FIELD5": "372"
+   },
+   "Ethiopia": {
+      "FIELD2": "ET",
+      "FIELD3": "ETH",
+      "FIELD4": "231",
+      "FIELD5": "251"
+   },
+   "Falkland Islands (Malvinas)": {
+      "FIELD2": "FK",
+      "FIELD3": "FLK",
+      "FIELD4": "238",
+      "FIELD5": "500"
+   },
+   "Faroe Islands": {
+      "FIELD2": "FO",
+      "FIELD3": "FRO",
+      "FIELD4": "234",
+      "FIELD5": "298"
+   },
+   "Fiji": {
+      "FIELD2": "FJ",
+      "FIELD3": "FJI",
+      "FIELD4": "242",
+      "FIELD5": "679"
+   },
+   "Finland": {
+      "FIELD2": "FI",
+      "FIELD3": "FIN",
+      "FIELD4": "246",
+      "FIELD5": "358"
+   },
+   "France": {
+      "FIELD2": "FR",
+      "FIELD3": "FRA",
+      "FIELD4": "250",
+      "FIELD5": "33"
+   },
+   "French Guiana": {
+      "FIELD2": "GF",
+      "FIELD3": "GUF",
+      "FIELD4": "254",
+      "FIELD5": "594"
+   },
+   "French Polynesia": {
+      "FIELD2": "PF",
+      "FIELD3": "PYF",
+      "FIELD4": "258",
+      "FIELD5": "689"
+   },
+   "French Southern Territories": {
+      "FIELD2": "TF",
+      "FIELD3": "ATF",
+      "FIELD4": "260",
+      "FIELD5": "262"
+   },
+   "Gabon": {
+      "FIELD2": "GA",
+      "FIELD3": "GAB",
+      "FIELD4": "266",
+      "FIELD5": "241"
+   },
+   "Gambia": {
+      "FIELD2": "GM",
+      "FIELD3": "GMB",
+      "FIELD4": "270",
+      "FIELD5": "220"
+   },
+   "Georgia": {
+      "FIELD2": "GE",
+      "FIELD3": "GEO",
+      "FIELD4": "268",
+      "FIELD5": "995"
+   },
+   "Germany": {
+      "FIELD2": "DE",
+      "FIELD3": "DEU",
+      "FIELD4": "276",
+      "FIELD5": "49"
+   },
+   "Ghana": {
+      "FIELD2": "GH",
+      "FIELD3": "GHA",
+      "FIELD4": "288",
+      "FIELD5": "233"
+   },
+   "Gibraltar": {
+      "FIELD2": "GI",
+      "FIELD3": "GIB",
+      "FIELD4": "292",
+      "FIELD5": "350"
+   },
+   "Greece": {
+      "FIELD2": "GR",
+      "FIELD3": "GRC",
+      "FIELD4": "300",
+      "FIELD5": "30"
+   },
+   "Greenland": {
+      "FIELD2": "GL",
+      "FIELD3": "GRL",
+      "FIELD4": "304",
+      "FIELD5": "299"
+   },
+   "Grenada": {
+      "FIELD2": "GD",
+      "FIELD3": "GRD",
+      "FIELD4": "308",
+      "FIELD5": "1-473"
+   },
+   "Guadeloupe": {
+      "FIELD2": "GP",
+      "FIELD3": "GLP",
+      "FIELD4": "312",
+      "FIELD5": "590"
+   },
+   "Guam": {
+      "FIELD2": "GU",
+      "FIELD3": "GUM",
+      "FIELD4": "316",
+      "FIELD5": "1-671"
+   },
+   "Guatemala": {
+      "FIELD2": "GT",
+      "FIELD3": "GTM",
+      "FIELD4": "320",
+      "FIELD5": "502"
+   },
+   "Guernsey": {
+      "FIELD2": "GG",
+      "FIELD3": "GGY",
+      "FIELD4": "831",
+      "FIELD5": "44"
+   },
+   "Guinea": {
+      "FIELD2": "GN",
+      "FIELD3": "GIN",
+      "FIELD4": "324",
+      "FIELD5": "224"
+   },
+   "Guinea-Bissau": {
+      "FIELD2": "GW",
+      "FIELD3": "GNB",
+      "FIELD4": "624",
+      "FIELD5": "245"
+   },
+   "Guyana": {
+      "FIELD2": "GY",
+      "FIELD3": "GUY",
+      "FIELD4": "328",
+      "FIELD5": "592"
+   },
+   "Haiti": {
+      "FIELD2": "HT",
+      "FIELD3": "HTI",
+      "FIELD4": "332",
+      "FIELD5": "509"
+   },
+   "Heard Island and McDonald Mcdonald Islands": {
+      "FIELD2": "HM",
+      "FIELD3": "HMD",
+      "FIELD4": "334",
+      "FIELD5": "672"
+   },
+   "Holy See (Vatican City State)": {
+      "FIELD2": "VA",
+      "FIELD3": "VAT",
+      "FIELD4": "336",
+      "FIELD5": "379"
+   },
+   "Honduras": {
+      "FIELD2": "HN",
+      "FIELD3": "HND",
+      "FIELD4": "340",
+      "FIELD5": "504"
+   },
+   "Hong Kong": {
+      "FIELD2": "HK",
+      "FIELD3": "HKG",
+      "FIELD4": "344",
+      "FIELD5": "852"
+   },
+   "Hungary": {
+      "FIELD2": "HU",
+      "FIELD3": "HUN",
+      "FIELD4": "348",
+      "FIELD5": "36"
+   },
+   "Iceland": {
+      "FIELD2": "IS",
+      "FIELD3": "ISL",
+      "FIELD4": "352",
+      "FIELD5": "354"
+   },
+   "India": {
+      "FIELD2": "IN",
+      "FIELD3": "IND",
+      "FIELD4": "356",
+      "FIELD5": "91"
+   },
+   "Indonesia": {
+      "FIELD2": "ID",
+      "FIELD3": "IDN",
+      "FIELD4": "360",
+      "FIELD5": "62"
+   },
+   "Iran, Islamic Republic of": {
+      "FIELD2": "IR",
+      "FIELD3": "IRN",
+      "FIELD4": "364",
+      "FIELD5": "98"
+   },
+   "Iraq": {
+      "FIELD2": "IQ",
+      "FIELD3": "IRQ",
+      "FIELD4": "368",
+      "FIELD5": "964"
+   },
+   "Ireland": {
+      "FIELD2": "IE",
+      "FIELD3": "IRL",
+      "FIELD4": "372",
+      "FIELD5": "353"
+   },
+   "Isle of Man": {
+      "FIELD2": "IM",
+      "FIELD3": "IMN",
+      "FIELD4": "833",
+      "FIELD5": "44"
+   },
+   "Israel": {
+      "FIELD2": "IL",
+      "FIELD3": "ISR",
+      "FIELD4": "376",
+      "FIELD5": "972"
+   },
+   "Italy": {
+      "FIELD2": "IT",
+      "FIELD3": "ITA",
+      "FIELD4": "380",
+      "FIELD5": "39"
+   },
+   "Jamaica": {
+      "FIELD2": "JM",
+      "FIELD3": "JAM",
+      "FIELD4": "388",
+      "FIELD5": "1-876"
+   },
+   "Japan": {
+      "FIELD2": "JP",
+      "FIELD3": "JPN",
+      "FIELD4": "392",
+      "FIELD5": "81"
+   },
+   "Jersey": {
+      "FIELD2": "JE",
+      "FIELD3": "JEY",
+      "FIELD4": "832",
+      "FIELD5": "44"
+   },
+   "Jordan": {
+      "FIELD2": "JO",
+      "FIELD3": "JOR",
+      "FIELD4": "400",
+      "FIELD5": "962"
+   },
+   "Kazakhstan": {
+      "FIELD2": "KZ",
+      "FIELD3": "KAZ",
+      "FIELD4": "398",
+      "FIELD5": "7"
+   },
+   "Kenya": {
+      "FIELD2": "KE",
+      "FIELD3": "KEN",
+      "FIELD4": "404",
+      "FIELD5": "254"
+   },
+   "Kiribati": {
+      "FIELD2": "KI",
+      "FIELD3": "KIR",
+      "FIELD4": "296",
+      "FIELD5": "686"
+   },
+   "Korea, Democratic People's Republic of": {
+      "FIELD2": "KP",
+      "FIELD3": "PRK",
+      "FIELD4": "408",
+      "FIELD5": "850"
+   },
+   "Korea, Republic of": {
+      "FIELD2": "KR",
+      "FIELD3": "KOR",
+      "FIELD4": "410",
+      "FIELD5": "82"
+   },
+   "Kuwait": {
+      "FIELD2": "KW",
+      "FIELD3": "KWT",
+      "FIELD4": "414",
+      "FIELD5": "965"
+   },
+   "Kyrgyzstan": {
+      "FIELD2": "KG",
+      "FIELD3": "KGZ",
+      "FIELD4": "417",
+      "FIELD5": "996"
+   },
+   "Lao People's Democratic Republic": {
+      "FIELD2": "LA",
+      "FIELD3": "LAO",
+      "FIELD4": "418",
+      "FIELD5": "856"
+   },
+   "Latvia": {
+      "FIELD2": "LV",
+      "FIELD3": "LVA",
+      "FIELD4": "428",
+      "FIELD5": "371"
+   },
+   "Lebanon": {
+      "FIELD2": "LB",
+      "FIELD3": "LBN",
+      "FIELD4": "422",
+      "FIELD5": "961"
+   },
+   "Lesotho": {
+      "FIELD2": "LS",
+      "FIELD3": "LSO",
+      "FIELD4": "426",
+      "FIELD5": "266"
+   },
+   "Liberia": {
+      "FIELD2": "LR",
+      "FIELD3": "LBR",
+      "FIELD4": "430",
+      "FIELD5": "231"
+   },
+   "Libya": {
+      "FIELD2": "LY",
+      "FIELD3": "LBY",
+      "FIELD4": "434",
+      "FIELD5": "218"
+   },
+   "Liechtenstein": {
+      "FIELD2": "LI",
+      "FIELD3": "LIE",
+      "FIELD4": "438",
+      "FIELD5": "423"
+   },
+   "Lithuania": {
+      "FIELD2": "LT",
+      "FIELD3": "LTU",
+      "FIELD4": "440",
+      "FIELD5": "370"
+   },
+   "Luxembourg": {
+      "FIELD2": "LU",
+      "FIELD3": "LUX",
+      "FIELD4": "442",
+      "FIELD5": "352"
+   },
+   "Macao": {
+      "FIELD2": "MO",
+      "FIELD3": "MAC",
+      "FIELD4": "446",
+      "FIELD5": "853"
+   },
+   "Macedonia, the Former Yugoslav Republic of": {
+      "FIELD2": "MK",
+      "FIELD3": "MKD",
+      "FIELD4": "807",
+      "FIELD5": "389"
+   },
+   "Madagascar": {
+      "FIELD2": "MG",
+      "FIELD3": "MDG",
+      "FIELD4": "450",
+      "FIELD5": "261"
+   },
+   "Malawi": {
+      "FIELD2": "MW",
+      "FIELD3": "MWI",
+      "FIELD4": "454",
+      "FIELD5": "265"
+   },
+   "Malaysia": {
+      "FIELD2": "MY",
+      "FIELD3": "MYS",
+      "FIELD4": "458",
+      "FIELD5": "60"
+   },
+   "Maldives": {
+      "FIELD2": "MV",
+      "FIELD3": "MDV",
+      "FIELD4": "462",
+      "FIELD5": "960"
+   },
+   "Mali": {
+      "FIELD2": "ML",
+      "FIELD3": "MLI",
+      "FIELD4": "466",
+      "FIELD5": "223"
+   },
+   "Malta": {
+      "FIELD2": "MT",
+      "FIELD3": "MLT",
+      "FIELD4": "470",
+      "FIELD5": "356"
+   },
+   "Marshall Islands": {
+      "FIELD2": "MH",
+      "FIELD3": "MHL",
+      "FIELD4": "584",
+      "FIELD5": "692"
+   },
+   "Martinique": {
+      "FIELD2": "MQ",
+      "FIELD3": "MTQ",
+      "FIELD4": "474",
+      "FIELD5": "596"
+   },
+   "Mauritania": {
+      "FIELD2": "MR",
+      "FIELD3": "MRT",
+      "FIELD4": "478",
+      "FIELD5": "222"
+   },
+   "Mauritius": {
+      "FIELD2": "MU",
+      "FIELD3": "MUS",
+      "FIELD4": "480",
+      "FIELD5": "230"
+   },
+   "Mayotte": {
+      "FIELD2": "YT",
+      "FIELD3": "MYT",
+      "FIELD4": "175",
+      "FIELD5": "262"
+   },
+   "Mexico": {
+      "FIELD2": "MX",
+      "FIELD3": "MEX",
+      "FIELD4": "484",
+      "FIELD5": "52"
+   },
+   "Micronesia, Federated States of": {
+      "FIELD2": "FM",
+      "FIELD3": "FSM",
+      "FIELD4": "583",
+      "FIELD5": "691"
+   },
+   "Moldova, Republic of": {
+      "FIELD2": "MD",
+      "FIELD3": "MDA",
+      "FIELD4": "498",
+      "FIELD5": "373"
+   },
+   "Monaco": {
+      "FIELD2": "MC",
+      "FIELD3": "MCO",
+      "FIELD4": "492",
+      "FIELD5": "377"
+   },
+   "Mongolia": {
+      "FIELD2": "MN",
+      "FIELD3": "MNG",
+      "FIELD4": "496",
+      "FIELD5": "976"
+   },
+   "Montenegro": {
+      "FIELD2": "ME",
+      "FIELD3": "MNE",
+      "FIELD4": "499",
+      "FIELD5": "382"
+   },
+   "Montserrat": {
+      "FIELD2": "MS",
+      "FIELD3": "MSR",
+      "FIELD4": "500",
+      "FIELD5": "1-664"
+   },
+   "Morocco": {
+      "FIELD2": "MA",
+      "FIELD3": "MAR",
+      "FIELD4": "504",
+      "FIELD5": "212"
+   },
+   "Mozambique": {
+      "FIELD2": "MZ",
+      "FIELD3": "MOZ",
+      "FIELD4": "508",
+      "FIELD5": "258"
+   },
+   "Myanmar": {
+      "FIELD2": "MM",
+      "FIELD3": "MMR",
+      "FIELD4": "104",
+      "FIELD5": "95"
+   },
+   "Namibia": {
+      "FIELD2": "NA",
+      "FIELD3": "NAM",
+      "FIELD4": "516",
+      "FIELD5": "264"
+   },
+   "Nauru": {
+      "FIELD2": "NR",
+      "FIELD3": "NRU",
+      "FIELD4": "520",
+      "FIELD5": "674"
+   },
+   "Nepal": {
+      "FIELD2": "NP",
+      "FIELD3": "NPL",
+      "FIELD4": "524",
+      "FIELD5": "977"
+   },
+   "Netherlands": {
+      "FIELD2": "NL",
+      "FIELD3": "NLD",
+      "FIELD4": "528",
+      "FIELD5": "31"
+   },
+   "New Caledonia": {
+      "FIELD2": "NC",
+      "FIELD3": "NCL",
+      "FIELD4": "540",
+      "FIELD5": "687"
+   },
+   "New Zealand": {
+      "FIELD2": "NZ",
+      "FIELD3": "NZL",
+      "FIELD4": "554",
+      "FIELD5": "64"
+   },
+   "Nicaragua": {
+      "FIELD2": "NI",
+      "FIELD3": "NIC",
+      "FIELD4": "558",
+      "FIELD5": "505"
+   },
+   "Niger": {
+      "FIELD2": "NE",
+      "FIELD3": "NER",
+      "FIELD4": "562",
+      "FIELD5": "227"
+   },
+   "Nigeria": {
+      "FIELD2": "NG",
+      "FIELD3": "NGA",
+      "FIELD4": "566",
+      "FIELD5": "234"
+   },
+   "Niue": {
+      "FIELD2": "NU",
+      "FIELD3": "NIU",
+      "FIELD4": "570",
+      "FIELD5": "683"
+   },
+   "Norfolk Island": {
+      "FIELD2": "NF",
+      "FIELD3": "NFK",
+      "FIELD4": "574",
+      "FIELD5": "672"
+   },
+   "Northern Mariana Islands": {
+      "FIELD2": "MP",
+      "FIELD3": "MNP",
+      "FIELD4": "580",
+      "FIELD5": "1-670"
+   },
+   "Norway": {
+      "FIELD2": "NO",
+      "FIELD3": "NOR",
+      "FIELD4": "578",
+      "FIELD5": "47"
+   },
+   "Oman": {
+      "FIELD2": "OM",
+      "FIELD3": "OMN",
+      "FIELD4": "512",
+      "FIELD5": "968"
+   },
+   "Pakistan": {
+      "FIELD2": "PK",
+      "FIELD3": "PAK",
+      "FIELD4": "586",
+      "FIELD5": "92"
+   },
+   "Palau": {
+      "FIELD2": "PW",
+      "FIELD3": "PLW",
+      "FIELD4": "585",
+      "FIELD5": "680"
+   },
+   "Palestine, State of": {
+      "FIELD2": "PS",
+      "FIELD3": "PSE",
+      "FIELD4": "275",
+      "FIELD5": "970"
+   },
+   "Panama": {
+      "FIELD2": "PA",
+      "FIELD3": "PAN",
+      "FIELD4": "591",
+      "FIELD5": "507"
+   },
+   "Papua New Guinea": {
+      "FIELD2": "PG",
+      "FIELD3": "PNG",
+      "FIELD4": "598",
+      "FIELD5": "675"
+   },
+   "Paraguay": {
+      "FIELD2": "PY",
+      "FIELD3": "PRY",
+      "FIELD4": "600",
+      "FIELD5": "595"
+   },
+   "Peru": {
+      "FIELD2": "PE",
+      "FIELD3": "PER",
+      "FIELD4": "604",
+      "FIELD5": "51"
+   },
+   "Philippines": {
+      "FIELD2": "PH",
+      "FIELD3": "PHL",
+      "FIELD4": "608",
+      "FIELD5": "63"
+   },
+   "Pitcairn": {
+      "FIELD2": "PN",
+      "FIELD3": "PCN",
+      "FIELD4": "612",
+      "FIELD5": "870"
+   },
+   "Poland": {
+      "FIELD2": "PL",
+      "FIELD3": "POL",
+      "FIELD4": "616",
+      "FIELD5": "48"
+   },
+   "Portugal": {
+      "FIELD2": "PT",
+      "FIELD3": "PRT",
+      "FIELD4": "620",
+      "FIELD5": "351"
+   },
+   "Puerto Rico": {
+      "FIELD2": "PR",
+      "FIELD3": "PRI",
+      "FIELD4": "630",
+      "FIELD5": "1"
+   },
+   "Qatar": {
+      "FIELD2": "QA",
+      "FIELD3": "QAT",
+      "FIELD4": "634",
+      "FIELD5": "974"
+   },
+   "Romania": {
+      "FIELD2": "RO",
+      "FIELD3": "ROU",
+      "FIELD4": "642",
+      "FIELD5": "40"
+   },
+   "Russian Federation": {
+      "FIELD2": "RU",
+      "FIELD3": "RUS",
+      "FIELD4": "643",
+      "FIELD5": "7"
+   },
+   "Rwanda": {
+      "FIELD2": "RW",
+      "FIELD3": "RWA",
+      "FIELD4": "646",
+      "FIELD5": "250"
+   },
+   "Reunion": {
+      "FIELD2": "RE",
+      "FIELD3": "REU",
+      "FIELD4": "638",
+      "FIELD5": "262"
+   },
+   "Saint Barthelemy": {
+      "FIELD2": "BL",
+      "FIELD3": "BLM",
+      "FIELD4": "652",
+      "FIELD5": "590"
+   },
+   "Saint Helena": {
+      "FIELD2": "SH",
+      "FIELD3": "SHN",
+      "FIELD4": "654",
+      "FIELD5": "290"
+   },
+   "Saint Kitts and Nevis": {
+      "FIELD2": "KN",
+      "FIELD3": "KNA",
+      "FIELD4": "659",
+      "FIELD5": "1-869"
+   },
+   "Saint Lucia": {
+      "FIELD2": "LC",
+      "FIELD3": "LCA",
+      "FIELD4": "662",
+      "FIELD5": "1-758"
+   },
+   "Saint Martin (French part)": {
+      "FIELD2": "MF",
+      "FIELD3": "MAF",
+      "FIELD4": "663",
+      "FIELD5": "590"
+   },
+   "Saint Pierre and Miquelon": {
+      "FIELD2": "PM",
+      "FIELD3": "SPM",
+      "FIELD4": "666",
+      "FIELD5": "508"
+   },
+   "Saint Vincent and the Grenadines": {
+      "FIELD2": "VC",
+      "FIELD3": "VCT",
+      "FIELD4": "670",
+      "FIELD5": "1-784"
+   },
+   "Samoa": {
+      "FIELD2": "WS",
+      "FIELD3": "WSM",
+      "FIELD4": "882",
+      "FIELD5": "685"
+   },
+   "San Marino": {
+      "FIELD2": "SM",
+      "FIELD3": "SMR",
+      "FIELD4": "674",
+      "FIELD5": "378"
+   },
+   "Sao Tome and Principe": {
+      "FIELD2": "ST",
+      "FIELD3": "STP",
+      "FIELD4": "678",
+      "FIELD5": "239"
+   },
+   "Saudi Arabia": {
+      "FIELD2": "SA",
+      "FIELD3": "SAU",
+      "FIELD4": "682",
+      "FIELD5": "966"
+   },
+   "Senegal": {
+      "FIELD2": "SN",
+      "FIELD3": "SEN",
+      "FIELD4": "686",
+      "FIELD5": "221"
+   },
+   "Serbia": {
+      "FIELD2": "RS",
+      "FIELD3": "SRB",
+      "FIELD4": "688",
+      "FIELD5": "381"
+   },
+   "Seychelles": {
+      "FIELD2": "SC",
+      "FIELD3": "SYC",
+      "FIELD4": "690",
+      "FIELD5": "248"
+   },
+   "Sierra Leone": {
+      "FIELD2": "SL",
+      "FIELD3": "SLE",
+      "FIELD4": "694",
+      "FIELD5": "232"
+   },
+   "Singapore": {
+      "FIELD2": "SG",
+      "FIELD3": "SGP",
+      "FIELD4": "702",
+      "FIELD5": "65"
+   },
+   "Sint Maarten (Dutch part)": {
+      "FIELD2": "SX",
+      "FIELD3": "SXM",
+      "FIELD4": "534",
+      "FIELD5": "1-721"
+   },
+   "Slovakia": {
+      "FIELD2": "SK",
+      "FIELD3": "SVK",
+      "FIELD4": "703",
+      "FIELD5": "421"
+   },
+   "Slovenia": {
+      "FIELD2": "SI",
+      "FIELD3": "SVN",
+      "FIELD4": "705",
+      "FIELD5": "386"
+   },
+   "Solomon Islands": {
+      "FIELD2": "SB",
+      "FIELD3": "SLB",
+      "FIELD4": "90",
+      "FIELD5": "677"
+   },
+   "Somalia": {
+      "FIELD2": "SO",
+      "FIELD3": "SOM",
+      "FIELD4": "706",
+      "FIELD5": "252"
+   },
+   "South Africa": {
+      "FIELD2": "ZA",
+      "FIELD3": "ZAF",
+      "FIELD4": "710",
+      "FIELD5": "27"
+   },
+   "South Georgia and the South Sandwich Islands": {
+      "FIELD2": "GS",
+      "FIELD3": "SGS",
+      "FIELD4": "239",
+      "FIELD5": "500"
+   },
+   "South Sudan": {
+      "FIELD2": "SS",
+      "FIELD3": "SSD",
+      "FIELD4": "728",
+      "FIELD5": "211"
+   },
+   "Spain": {
+      "FIELD2": "ES",
+      "FIELD3": "ESP",
+      "FIELD4": "724",
+      "FIELD5": "34"
+   },
+   "Sri Lanka": {
+      "FIELD2": "LK",
+      "FIELD3": "LKA",
+      "FIELD4": "144",
+      "FIELD5": "94"
+   },
+   "Sudan": {
+      "FIELD2": "SD",
+      "FIELD3": "SDN",
+      "FIELD4": "729",
+      "FIELD5": "249"
+   },
+   "Suriname": {
+      "FIELD2": "SR",
+      "FIELD3": "SUR",
+      "FIELD4": "740",
+      "FIELD5": "597"
+   },
+   "Svalbard and Jan Mayen": {
+      "FIELD2": "SJ",
+      "FIELD3": "SJM",
+      "FIELD4": "744",
+      "FIELD5": "47"
+   },
+   "Swaziland": {
+      "FIELD2": "SZ",
+      "FIELD3": "SWZ",
+      "FIELD4": "748",
+      "FIELD5": "268"
+   },
+   "Sweden": {
+      "FIELD2": "SE",
+      "FIELD3": "SWE",
+      "FIELD4": "752",
+      "FIELD5": "46"
+   },
+   "Switzerland": {
+      "FIELD2": "CH",
+      "FIELD3": "CHE",
+      "FIELD4": "756",
+      "FIELD5": "41"
+   },
+   "Syrian Arab Republic": {
+      "FIELD2": "SY",
+      "FIELD3": "SYR",
+      "FIELD4": "760",
+      "FIELD5": "963"
+   },
+   "Taiwan, Province of China": {
+      "FIELD2": "TW",
+      "FIELD3": "TWN",
+      "FIELD4": "158",
+      "FIELD5": "886"
+   },
+   "Tajikistan": {
+      "FIELD2": "TJ",
+      "FIELD3": "TJK",
+      "FIELD4": "762",
+      "FIELD5": "992"
+   },
+   "United Republic of Tanzania": {
+      "FIELD2": "TZ",
+      "FIELD3": "TZA",
+      "FIELD4": "834",
+      "FIELD5": "255"
+   },
+   "Thailand": {
+      "FIELD2": "TH",
+      "FIELD3": "THA",
+      "FIELD4": "764",
+      "FIELD5": "66"
+   },
+   "Timor-Leste": {
+      "FIELD2": "TL",
+      "FIELD3": "TLS",
+      "FIELD4": "626",
+      "FIELD5": "670"
+   },
+   "Togo": {
+      "FIELD2": "TG",
+      "FIELD3": "TGO",
+      "FIELD4": "768",
+      "FIELD5": "228"
+   },
+   "Tokelau": {
+      "FIELD2": "TK",
+      "FIELD3": "TKL",
+      "FIELD4": "772",
+      "FIELD5": "690"
+   },
+   "Tonga": {
+      "FIELD2": "TO",
+      "FIELD3": "TON",
+      "FIELD4": "776",
+      "FIELD5": "676"
+   },
+   "Trinidad and Tobago": {
+      "FIELD2": "TT",
+      "FIELD3": "TTO",
+      "FIELD4": "780",
+      "FIELD5": "1-868"
+   },
+   "Tunisia": {
+      "FIELD2": "TN",
+      "FIELD3": "TUN",
+      "FIELD4": "788",
+      "FIELD5": "216"
+   },
+   "Turkey": {
+      "FIELD2": "TR",
+      "FIELD3": "TUR",
+      "FIELD4": "792",
+      "FIELD5": "90"
+   },
+   "Turkmenistan": {
+      "FIELD2": "TM",
+      "FIELD3": "TKM",
+      "FIELD4": "795",
+      "FIELD5": "993"
+   },
+   "Turks and Caicos Islands": {
+      "FIELD2": "TC",
+      "FIELD3": "TCA",
+      "FIELD4": "796",
+      "FIELD5": "1-649"
+   },
+   "Tuvalu": {
+      "FIELD2": "TV",
+      "FIELD3": "TUV",
+      "FIELD4": "798",
+      "FIELD5": "688"
+   },
+   "Uganda": {
+      "FIELD2": "UG",
+      "FIELD3": "UGA",
+      "FIELD4": "800",
+      "FIELD5": "256"
+   },
+   "Ukraine": {
+      "FIELD2": "UA",
+      "FIELD3": "UKR",
+      "FIELD4": "804",
+      "FIELD5": "380"
+   },
+   "United Arab Emirates": {
+      "FIELD2": "AE",
+      "FIELD3": "ARE",
+      "FIELD4": "784",
+      "FIELD5": "971"
+   },
+   "United Kingdom": {
+      "FIELD2": "GB",
+      "FIELD3": "GBR",
+      "FIELD4": "826",
+      "FIELD5": "44"
+   },
+   "United States": {
+      "FIELD2": "US",
+      "FIELD3": "USA",
+      "FIELD4": "840",
+      "FIELD5": "1"
+   },
+   "United States Minor Outlying Islands": {
+      "FIELD2": "UM",
+      "FIELD3": "UMI",
+      "FIELD4": "581",
+      "FIELD5": "1"
+   },
+   "Uruguay": {
+      "FIELD2": "UY",
+      "FIELD3": "URY",
+      "FIELD4": "858",
+      "FIELD5": "598"
+   },
+   "Uzbekistan": {
+      "FIELD2": "UZ",
+      "FIELD3": "UZB",
+      "FIELD4": "860",
+      "FIELD5": "998"
+   },
+   "Vanuatu": {
+      "FIELD2": "VU",
+      "FIELD3": "VUT",
+      "FIELD4": "548",
+      "FIELD5": "678"
+   },
+   "Venezuela": {
+      "FIELD2": "VE",
+      "FIELD3": "VEN",
+      "FIELD4": "862",
+      "FIELD5": "58"
+   },
+   "Viet Nam": {
+      "FIELD2": "VN",
+      "FIELD3": "VNM",
+      "FIELD4": "704",
+      "FIELD5": "84"
+   },
+   "British Virgin Islands": {
+      "FIELD2": "VG",
+      "FIELD3": "VGB",
+      "FIELD4": "92",
+      "FIELD5": "1-284"
+   },
+   "US Virgin Islands": {
+      "FIELD2": "VI",
+      "FIELD3": "VIR",
+      "FIELD4": "850",
+      "FIELD5": "1-340"
+   },
+   "Wallis and Futuna": {
+      "FIELD2": "WF",
+      "FIELD3": "WLF",
+      "FIELD4": "876",
+      "FIELD5": "681"
+   },
+   "Western Sahara": {
+      "FIELD2": "EH",
+      "FIELD3": "ESH",
+      "FIELD4": "732",
+      "FIELD5": "212"
+   },
+   "Yemen": {
+      "FIELD2": "YE",
+      "FIELD3": "YEM",
+      "FIELD4": "887",
+      "FIELD5": "967"
+   },
+   "Zambia": {
+      "FIELD2": "ZM",
+      "FIELD3": "ZMB",
+      "FIELD4": "894",
+      "FIELD5": "260"
+   },
+   "Zimbabwe": {
+      "FIELD2": "ZW",
+      "FIELD3": "ZWE",
+      "FIELD4": "716",
+      "FIELD5": "263"
+   }
+}

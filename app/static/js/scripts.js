@@ -7,7 +7,23 @@
 
 // list of buttons that need activity
 var buttons = ['map', 'left', 'right'];
-var internetData;
+var countryConverter; 
+
+// https://www.worldatlas.com/aatlas/ctycodes.htm
+$.getJSON('data/countryTable.json', function(data) {
+    countryConverter = function(twoCode) {
+        var threeValue;
+        $.each(data, function(country, nestedValues) {
+            if (twoCode == nestedValues.FIELD2) {
+                threeCode = nestedValues.FIELD3;
+                return false;
+            }
+        });
+        return threeCode;
+    };
+});
+var internetData,
+    map;
 
 // on DOM load this will be executed
 $(function() {
@@ -15,19 +31,32 @@ $(function() {
     // disable 'right-mouse menu' to use right mouse button later
     document.oncontextmenu = function() { return false; };
 
+    // init the map
+    map = new Datamap({
+        element: document.getElementById('map'),
+        responsive: true,
+        fills: {
+            '0': '#ffffe5',
+            '1': '#f7fcb9',
+            '2': '#d9f0a3',
+            '3': '#addd8e',
+            '4': '#78c679',
+            '5': '#41ab5d',
+            '6': '#238443',
+            '7': '#006837',
+            '8': '#004529',
+            defaultFill: 'grey'
+        }
+    });
+
     // load data for plots
     queue()
         .defer(d3.csv, 'data/inclusive-internet-index-data.csv') 
         .await(function(error, data1) {
             if (error) throw error;
-            console.log(data1);
+            internetData = data1;
+            addDataToMap(1);
         });
-
-    // init the map
-    var map = new Datamap({
-        element: document.getElementById('map'),
-        responsive: true
-    });
 
     // create listeners for all buttons defined in buttons
     $.each(buttons, function(i, button) {
@@ -135,8 +164,5 @@ function dragController(clicked, country) {
 
 // triggered when the draggable is droppped
 function pickController(country) {
-    console.log($('.hover-plot'));
-    console.log($('.hover-plot').children[1])
-    console.log(country);
     $('.hover-plot').removeClass('hover-plot');
 }
