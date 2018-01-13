@@ -26,6 +26,9 @@ body {
     width: 100%;
     position: top;
 }
+.hover-plot {
+    outline: #00FF00 dotted thick;
+}
 .drag-div {
     width: 300px;
     height: 300px;

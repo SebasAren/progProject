@@ -26,9 +26,12 @@ $(function() {
 
     $('.datamaps-subunit').mousedown(function(event) {
         dragController($(this), event);
-        $(document.body).mouseup(function(event) {
+        $(document).off('mouseup');
+        $(document).mouseup(function(event) {
+            var country = $('.drag-div').html();
             $('.drag-div').remove();
-            pickController($(this), event);
+            pickController(country , event);
+            $(document).off('mouseup');
         });
     });
 }); 
@@ -67,16 +70,12 @@ function dragController(clicked, country) {
         + element.height()) {
 
             // change the style of the plot
-            element.css({
-                'outline': '#00FF00 dotted thick'
-            });
+            element.addClass('hover-plot');
         }
 
         // reset if not on plot
         else {
-            element.css({
-                'outline': 'none' 
-            });
+            element.removeClass('hover-plot');
         }
     }
     
@@ -86,8 +85,8 @@ function dragController(clicked, country) {
             'left': (country.pageX) + 'px',
             'top': (country.pageY) + 'px',
         })
-        .appendTo($('body'))
-        .html('Test')
+        .appendTo($(document.body))
+        .html(clicked[0].classList[1])
 
         // functions needed to control the new element
         .mousemove(function(event) {
@@ -102,6 +101,7 @@ function dragController(clicked, country) {
 }
 
 // triggered when the draggable is droppped
-function pickController(clicked, country) {
-    return undefined;
+function pickController(country, position) {
+    console.log($('.hover-plot'));
+    $('.hover-plot').removeClass('hover-plot');
 }
