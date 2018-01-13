@@ -7,10 +7,21 @@
 
 // list of buttons that need activity
 var buttons = ['map', 'left', 'right'];
+var internetData;
 
 // on DOM load this will be executed
 $(function() {
+    
+    // disable 'right-mouse menu' to use right mouse button later
+    document.oncontextmenu = function() { return false; };
 
+    // load data for plots
+    queue()
+        .defer(d3.csv, 'data/inclusive-internet-index-data.csv') 
+        .await(function(error, data1) {
+            if (error) throw error;
+            console.log(data1);
+        });
 
     // init the map
     var map = new Datamap({
@@ -25,11 +36,11 @@ $(function() {
         });
     });
 
-    document.oncontextmenu = function() { return false; };
     // triggered on mousedown on country in the datamap
     $('.datamaps-subunit').mousedown(function(event) {
 
         if (event.button == 2) {
+            // TODO: create a tooltip with a link to wikipedia?
 
         }
 
