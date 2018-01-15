@@ -4,30 +4,34 @@
  *
  * All scripts used in the visualization are defined here.
  */
+'use strict';
 
 // list of buttons that need activity
 var buttons = ['map', 'left', 'right'];
-var countryConverter; 
+var countryConverter;
+var internetData,
+    map;
 
 // https://www.worldatlas.com/aatlas/ctycodes.htm
 $.getJSON('data/countryTable.json', function(data) {
     countryConverter = function(twoCode) {
-        var threeValue;
-        $.each(data, function(country, nestedValues) {
-            if (twoCode == nestedValues.FIELD2) {
-                threeCode = nestedValues.FIELD3;
-                return false;
-            }
-        });
-        return threeCode;
+        var threeCode;
+            $.each(data, function(country, nestedValues) {
+                if (twoCode == nestedValues.FIELD2) {
+                    threeCode = nestedValues.FIELD3;
+                    return false;
+                }
+            });
+        if (threeCode) {
+            return threeCode;
+        }
+        else {
+            return twoCode;
+        }
     };
 });
-var internetData,
-    map;
 
-// on DOM load this will be executed
-$(function() {
-    
+$(function() {    
     // disable 'right-mouse menu' to use right mouse button later
     document.oncontextmenu = function() { return false; };
 
@@ -35,27 +39,50 @@ $(function() {
     map = new Datamap({
         element: document.getElementById('map'),
         responsive: true,
+        geographyConfig: {
+            borderColor: '#000000'
+        },
         fills: {
-            '0': '#ffffe5',
-            '1': '#f7fcb9',
-            '2': '#d9f0a3',
-            '3': '#addd8e',
-            '4': '#78c679',
-            '5': '#41ab5d',
-            '6': '#238443',
-            '7': '#006837',
-            '8': '#004529',
+            0: colorbrewer.YlGn['9'][0],
+            1: colorbrewer.YlGn['9'][1],
+            2: colorbrewer.YlGn['9'][2],  
+            3: colorbrewer.YlGn['9'][3], 
+            4: colorbrewer.YlGn['9'][4], 
+            5: colorbrewer.YlGn['9'][5], 
+            6: colorbrewer.YlGn['9'][6], 
+            7: colorbrewer.YlGn['9'][7], 
+            8: colorbrewer.YlGn['9'][8], 
             defaultFill: 'grey'
         }
     });
 
+    var mapLegend = {
+        legendTitle: 'Title',
+        defaultFillName: 'No data',
+        labels: {
+            0: '0',
+            1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5',
+            6: '6',
+            7: '7',
+            8: '8'
+        }
+    };
+    map.legend(mapLegend);
+
     // load data for plots
     queue()
-        .defer(d3.csv, 'data/inclusive-internet-index-data.csv') 
+        .defer(d3.json, 'data/inclusive-internet-index-data.json') 
         .await(function(error, data1) {
             if (error) throw error;
             internetData = data1;
-            addDataToMap(1);
+
+            // initial data should show download speed
+            addDataToMap('upload');
+            setTimeout(function() { addDataToMap('upload'); }, 5000);
         });
 
     // create listeners for all buttons defined in buttons
@@ -74,7 +101,6 @@ $(function() {
         }
 
         else {
-
             // control the drag behaviour of the 'map element'
             dragController($(this), event);
 

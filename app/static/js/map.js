@@ -13,6 +13,9 @@ function addDataToMap(dataIndex) {
     // datacontainer
     var plotData = {};
 
+    var min = Infinity,
+        max = -Infinity;
+
     // loop over the original dataset to fix the data format
     $.each(internetData, function(_, entry) {
 
@@ -21,23 +24,28 @@ function addDataToMap(dataIndex) {
             entry.ISO = countryConverter(entry.ISO);
         }
 
-        var i = 0;
-        // find the correct data entry in the datafile
-        $.each(entry, function(_, dataPoint) {
-            if (i == (dataIndex + 1)) {
 
-                // store data in the json
-                plotData[entry.ISO] = {
-                    value: dataPoint
-                };
+        if (+entry[dataIndex] > max) max = +entry[dataIndex];
+        else if (+entry[dataIndex] < min) min = +entry[dataIndex];
 
-                // break loop
-                return false;
-            }
-            i++;
-        });
+        //plotData[entry.ISO] = {
+            //value: +entry[dataIndex]
+        //}
     });
+
+    var quantile = d3.scale.quantize()
+        .domain([min, max])
+        .range(['0', '1', '2', '3', '4', '5', '6', '7', '8']);
+
+    $.each(internetData, function(_, entry) {
+        plotData[entry.ISO] = {
+            value: entry[dataIndex],
+            fillKey: quantile(entry[dataIndex])
+        }
+    });
+    //$.each(plotData, function(_, entry) {
+        //entry['fillKey'] = quantile(entry.value);
+    //});
     
-    // TODO: fix coloring of the map
     map.updateChoropleth(plotData);
 }
