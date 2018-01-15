@@ -28,18 +28,19 @@ function addDataToMap(dataIndex) {
         if (+entry[dataIndex] > max) max = +entry[dataIndex];
         else if (+entry[dataIndex] < min) min = +entry[dataIndex];
 
-        //plotData[entry.ISO] = {
-            //value: +entry[dataIndex]
-        //}
     });
+    console.log(dataIndex, min, max)
 
     var quantile = d3.scale.quantize()
         .domain([min, max])
         .range(['0', '1', '2', '3', '4', '5', '6', '7', '8']);
 
     $.each(internetData, function(_, entry) {
+        if (quantile(entry[dataIndex]) == undefined) {
+            console.log(entry);
+        }
         plotData[entry.ISO] = {
-            value: entry[dataIndex],
+            //value: entry[dataIndex],
             fillKey: quantile(entry[dataIndex])
         }
     });

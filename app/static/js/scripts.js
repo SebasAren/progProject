@@ -81,8 +81,8 @@ $(function() {
             internetData = data1;
 
             // initial data should show download speed
-            addDataToMap('upload');
-            setTimeout(function() { addDataToMap('upload'); }, 5000);
+            addDataToMap('average broadband download');
+            setTimeout(function() { addDataToMap('average broadband upload'); }, 5000);
         });
 
     // create listeners for all buttons defined in buttons

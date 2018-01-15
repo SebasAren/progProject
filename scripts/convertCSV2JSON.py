@@ -10,8 +10,8 @@ import json
 import codecs
 
 # constants
-INPUT = '../app/data/inclusive-internet-index-data-2.csv'
-OUTPUT = '../app/data/inclusive-internet-index-data.json'
+INPUT = 'inclusive-internet-index-data.csv'
+OUTPUT = 'inclusive-internet-index-data.json'
 
 # function to read csv file
 def csv_reader(f):
