@@ -10,6 +10,7 @@
 var buttons = ['map', 'left', 'right'];
 var countryConverter;
 var internetData,
+    happyData,
     map;
 
 // https://www.worldatlas.com/aatlas/ctycodes.htm
@@ -33,7 +34,7 @@ $.getJSON('data/countryTable.json', function(data) {
 
 $(function() {    
     // disable 'right-mouse menu' to use right mouse button later
-    //document.oncontextmenu = function() { return false; };
+    // document.oncontextmenu = function() { return false; };
 
     // init the map
     map = new Datamap({
@@ -42,7 +43,7 @@ $(function() {
         geographyConfig: {
             borderColor: '#000000',
             popupTemplate: function(geography, data) {
-                return '<div class="hoverinfo">' + geography.properties.name + data.value + ' ';
+                return '<div class="hoverino">' + geography.properties.name + data.value + ' ';
             }
         },
         fills: {
@@ -62,13 +63,17 @@ $(function() {
     // load data for plots
     queue()
         .defer(d3.json, 'data/inclusive-internet-index-data.json')
-        .await(function(error, data1) {
+        .defer(d3.json, 'data/hpi.json')
+        .await(function(error, data1, data2) {
             if (error) throw error;
             internetData = data1;
+            happyData = data2;
+            console.log(happyData);
             console.log(internetData);
 
             // initial data should show download speed
-            addDataToMap('average broadband download', 9);
+            addDataToMap('average broadband download');
+            initScatterPlot();
         });
 
     // create listeners for all buttons defined in buttons
@@ -118,6 +123,9 @@ var controlButtons = function(type) {
         $.each($('.' + type + '-btn.btn-success'), function() {
             $(this).attr('class', 'btn ' + type + '-btn');
         });
+        if (type == 'map') {
+            addDataToMap(input.attr('name'));
+        }
         input.attr('class', 'btn btn-success ' + type + '-btn');
     };
 };

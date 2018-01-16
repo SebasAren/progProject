@@ -8,13 +8,10 @@
 'use strict';
 
 // this will always show data from the global datasource internetData
-function addDataToMap(dataIndex, num) {
-    console.log(num);
- 
+function addDataToMap(dataIndex) {
+
     // datacontainer
-    var plotData = {},
-        min = Infinity,
-        max = -Infinity;
+    var plotData = {};
 
     // loop over the original dataset to fix the data format and find minMax
     $.each(internetData, function(_, entry) {
@@ -23,14 +20,9 @@ function addDataToMap(dataIndex, num) {
         if (entry.ISO.length < 3) {
             entry.ISO = countryConverter(entry.ISO);
         }
-        //if (+entry[dataIndex] > max){
-            //max = parseInt(entry[dataIndex]);
-            //console.log(max, entry['ISO'], entry[dataIndex]);
-        //}
-        //else if (+entry[dataIndex] < min) min = parseInt(entry[dataIndex]);
     });
 
-    var scale = setMapScale(dataIndex, num);
+    var scale = setMapScale(dataIndex);
 
     var mapLegend = {
         legendTitle: dataIndex,
@@ -38,7 +30,7 @@ function addDataToMap(dataIndex, num) {
         labels: {}
     };
 
-    for (var i = 0; i < num; i++) {
+    for (var i = 0; i < 9; i++) {
         var bounds = scale.invertExtent(i);
         mapLegend.labels[i] = String(parseInt(bounds[0])) + '-' + String(parseInt(bounds[1]));
     }
@@ -50,16 +42,16 @@ function addDataToMap(dataIndex, num) {
         }
     });
 
+    // update both map and legend
     map.updateChoropleth(plotData);
     map.legend(mapLegend);
 }
 
-var setMapScale = function(dataIndex, num) {
+var setMapScale = function(dataIndex) {
 
     // ES6 version of python range()
-    var range = [...Array(num).keys()];
+    var range = [...Array(9).keys()];
     $('.datamaps-legend').remove();
-    //map.fills = {};
     
     var domainScale = [];
     $.each(internetData, function(_, entry) {

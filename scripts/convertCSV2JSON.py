@@ -8,10 +8,11 @@
 import csv
 import json
 import codecs
+import pycountry
 
 # constants
-INPUT = 'inclusive-internet-index-data.csv'
-OUTPUT = '../app/data/inclusive-internet-index-data.json'
+INPUT = 'hpi.csv'
+OUTPUT = 'hpi.json'
 
 # function to read csv file
 def csv_reader(f):
@@ -21,9 +22,21 @@ def csv_reader(f):
     with codecs.open(f, 'r', encoding='utf-8', errors='ignore') as infile:
 
         # use DictReader to create dicts
-        reader = csv.DictReader(infile)
+        reader = csv.reader(infile)
+        next(reader)
         for row in reader:
-            data.append(row)
+            try:
+                country = pycountry.countries.lookup(row[0]).alpha_3
+            except LookupError:
+                country = 'Fill'
+            data_entry = {'ISO': country,
+                'country': row[0],
+                'life expectancy': float(row[1].replace(',', '.')),
+                'wellbeing': float(row[2].replace(',', '.')),
+                'inequality': float(row[3].replace(',', '.')),
+                'ecological footprint': float(row[4].replace(',', '.')),
+                'hpi':float(row[5].replace(',', '.'))}
+            data.append(data_entry)
     return data
 
 def json_writer(f, data):

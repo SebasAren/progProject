@@ -26,6 +26,7 @@ body {
 }
 .plot svg {
     width: 100%;
+    height: 600px;
     position: top;
 }
 .hover-plot {
@@ -39,4 +40,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.dot {
+    stroke: #293b47;
+    fill: #7A99Ac;
 }

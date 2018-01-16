@@ -23,10 +23,10 @@
             <p>Economic factors</p>
         </div>
         <div class="container-fluid btn-group-lg text-center">
-            <button type="button" class="btn map-btn">Speed</button>
-            <button type="button" class="btn map-btn">Mobile speed</button>
-            <button type="button" class="btn map-btn">Electricity access</button>
-            <button type="button" class="btn map-btn">Percentage internet users</button>
+            <button type="button" class="btn map-btn btn-success" name="average broadband download">Download</button>
+            <button type="button" class="btn map-btn" name="average broadband upload">Upload</button>
+            <button type="button" class="btn map-btn" name="average mobile download">Mobile download</button>
+            <button type="button" class="btn map-btn" name="ping">Ping</button>
         </div>
         <!--Container for the data map-->
         <div class="container-fluid" id="map"></div>
@@ -46,7 +46,7 @@
                     <button type="button" class="btn right-btn">Happy planet index</button>
                     <button type="button" class="btn right-btn">Sad planet index?</button>
                 </div>
-                <img class="img-responsive" src="images/scatter.png"/>
+                <svg class="scatter-svg" id="scatter"/>
             </div>
         </div>
     </body>
