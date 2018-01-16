@@ -33,14 +33,17 @@ $.getJSON('data/countryTable.json', function(data) {
 
 $(function() {    
     // disable 'right-mouse menu' to use right mouse button later
-    document.oncontextmenu = function() { return false; };
+    //document.oncontextmenu = function() { return false; };
 
     // init the map
     map = new Datamap({
         element: document.getElementById('map'),
         responsive: true,
         geographyConfig: {
-            borderColor: '#000000'
+            borderColor: '#000000',
+            popupTemplate: function(geography, data) {
+                return '<div class="hoverinfo">' + geography.properties.name + data.value + ' ';
+            }
         },
         fills: {
             0: colorbrewer.YlGn['9'][0],
@@ -56,33 +59,16 @@ $(function() {
         }
     });
 
-    var mapLegend = {
-        legendTitle: 'Title',
-        defaultFillName: 'No data',
-        labels: {
-            0: '0',
-            1: '1',
-            2: '2',
-            3: '3',
-            4: '4',
-            5: '5',
-            6: '6',
-            7: '7',
-            8: '8'
-        }
-    };
-    map.legend(mapLegend);
-
     // load data for plots
     queue()
-        .defer(d3.json, 'data/inclusive-internet-index-data.json') 
+        .defer(d3.json, 'data/inclusive-internet-index-data.json')
         .await(function(error, data1) {
             if (error) throw error;
             internetData = data1;
+            console.log(internetData);
 
             // initial data should show download speed
-            addDataToMap('average broadband download');
-            setTimeout(function() { addDataToMap('average broadband upload'); }, 5000);
+            addDataToMap('average broadband download', 9);
         });
 
     // create listeners for all buttons defined in buttons

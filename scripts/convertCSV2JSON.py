@@ -11,7 +11,7 @@ import codecs
 
 # constants
 INPUT = 'inclusive-internet-index-data.csv'
-OUTPUT = 'inclusive-internet-index-data.json'
+OUTPUT = '../app/data/inclusive-internet-index-data.json'
 
 # function to read csv file
 def csv_reader(f):
