@@ -26,8 +26,9 @@ function initScatterPlot() {
         left: 40
     };
 
-    tipScatter = d3.tip().attr('class', 'd3-tip').html(function(d){
-        return d.ISO;
+    tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d){
+        var rv = '<b>Country: </b>' + d.ISO + '<br><b>x: </b>' + d.x + '<br><b>y: </b>' + d.y;
+        return rv;
     })
 
 
@@ -84,11 +85,21 @@ function initScatterPlot() {
 function addScatterData(internetIndex, happyIndex) {
     var data = [];
     for (var i = 0; i < countryScatter.length; i++) {
-        data.push({
-            'x': +internetData.find(item => item.ISO === countryScatter[i])[internetIndex],
-            'y': happyData.find(item => item.ISO === countryScatter[i])[happyIndex],
-            'ISO': countryScatter[i]
-        });
+
+        // add data if it's available, or catch the error and display a friendly message
+        try {
+            data.push({
+                'x': +internetData.find(item => item.ISO === countryScatter[i])[internetIndex],
+                'y': happyData.find(item => item.ISO === countryScatter[i])[happyIndex],
+                'ISO': countryScatter[i]
+            });
+        } 
+        catch(error) {
+            console.log('Country absent in one of the datasets (temp fix)');
+
+            // remove the country from the list
+            countryScatter.splice(i, 1);
+        }
     }
     return data;
 }
