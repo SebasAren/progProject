@@ -43,7 +43,7 @@ $(function() {
         geographyConfig: {
             borderColor: '#000000',
             popupTemplate: function(geography, data) {
-                return '<div class="hoverino">' + geography.properties.name + data.value + ' ';
+                return '<div class="hoverinfo">' + geography.properties.name + data.value + ' ';
             }
         },
         fills: {
@@ -103,10 +103,10 @@ $(function() {
 
                 // get country
                 var country = $('.drag-div').html();
+                pickController(country);
 
                 // remove draggable div and handle data transfer
                 $('.drag-div').remove();
-                pickController(country);
 
                 // remove listener again
                 $(document).off('mouseup');
@@ -184,5 +184,8 @@ function dragController(clicked, country) {
 
 // triggered when the draggable is droppped
 function pickController(country) {
+    if ($('.hover-plot').children()[1].id == 'scatter') {
+        addCountryScatter(country);
+    }
     $('.hover-plot').removeClass('hover-plot');
 }

@@ -36,12 +36,12 @@ function initScatterPlot() {
         .attr('transform', 'translate(' + marginScatter.left + ',' + marginScatter.top + ')');
 
     var data = [];
-    var countries = ['USA', 'CAN', 'KOR'];
+    var countryScatter = ['USA', 'CAN', 'KOR'];
 
-    for (var i = 0; i < countries.length; i++) {
+    for (var i = 0; i < countryScatter.length; i++) {
         data.push({
-            'x': +internetData.find(item => item.ISO === countries[i])['average broadband download'],
-            'y': happyData.find(item => item.ISO === countries[i]).hpi
+            'x': +internetData.find(item => item.ISO === countryScatter[i])['average broadband download'],
+            'y': happyData.find(item => item.ISO === countryScatter[i]).hpi
         });
     }
 
@@ -74,8 +74,18 @@ function initScatterPlot() {
         });
 }
 
-function addCountryScatter() {
+function addScatterData() {
+    for (var i = 0; i < countries.length; i++) {
+        data.push({
+            'x': +internetData.find(item => item.ISO === countries[i])['average broadband download'],
+            'y': happyData.find(item => item.ISO === countries[i]).hpi
+        });
+    }
 
+}
+
+function addCountryScatter(country) {
+    console.log(country);
 }
 
 function changeDataScatter() {
