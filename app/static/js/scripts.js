@@ -43,7 +43,7 @@ $(function() {
         geographyConfig: {
             borderColor: '#000000',
             popupTemplate: function(geography, data) {
-                return '<div class="hoverinfo">' + geography.properties.name + data.value + ' ';
+                return '<div class="hoverinfo">' + geography.properties.name +'<br>' + data.value + ' ';
             }
         },
         fills: {
@@ -103,10 +103,10 @@ $(function() {
 
                 // get country
                 var country = $('.drag-div').html();
+                $('.drag-div').remove();
                 pickController(country);
 
                 // remove draggable div and handle data transfer
-                $('.drag-div').remove();
 
                 // remove listener again
                 $(document).off('mouseup');
@@ -125,6 +125,10 @@ var controlButtons = function(type) {
         });
         if (type == 'map') {
             addDataToMap(input.attr('name'));
+            changeDataScatter(input.attr('name'), false);
+        }
+        if (type == 'right') {
+            changeDataScatter(false, input.attr('name'));
         }
         input.attr('class', 'btn btn-success ' + type + '-btn');
     };
@@ -184,8 +188,10 @@ function dragController(clicked, country) {
 
 // triggered when the draggable is droppped
 function pickController(country) {
-    if ($('.hover-plot').children()[1].id == 'scatter') {
-        addCountryScatter(country);
+    if ($('.hover-plot').length != 0) {
+        if ($('.hover-plot').children()[1].id == 'scatter') {
+            addCountryScatter(country);
+        }
     }
     $('.hover-plot').removeClass('hover-plot');
 }

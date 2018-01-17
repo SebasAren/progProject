@@ -1,7 +1,6 @@
 /* map.js
  * Sebastiaan Arendsen
- * Programmeerproject
- *
+ * Programmeerproject *
  * Contains functions to control the datamap
  */
 

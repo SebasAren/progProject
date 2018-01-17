@@ -1,4 +1,3 @@
-
 body {
     padding: 10px;
     /* Disable user text select, as this broke the drag function */
@@ -8,6 +7,9 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+button {
+    cursor: pointer;
 }
 #map {
     position: center;

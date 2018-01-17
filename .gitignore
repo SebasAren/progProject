@@ -109,3 +109,4 @@ wget-log
 *.swp
 
 /panel/
+/scripts
