@@ -168,8 +168,8 @@ function dragController(clicked, country) {
     // create div to be draggable
     $('<div class="drag-div"/>')
         .css({
-            'left': (country.pageX) + 'px',
-            'top': (country.pageY) + 'px',
+            'left': (country.pageX - 150) + 'px',
+            'top': (country.pageY - 150) + 'px',
         })
         .appendTo($(document.body))
         .html(clicked[0].classList[1])
