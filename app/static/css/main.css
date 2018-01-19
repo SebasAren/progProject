@@ -53,3 +53,8 @@ button {
     stroke: #293b47;
     fill: #7A99Ac;
 }
+.line {
+    stroke: #E4002B;
+    fill: none;
+    stroke-width: 3;
+}

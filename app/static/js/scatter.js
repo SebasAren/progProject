@@ -13,12 +13,15 @@ var xScatter,
     widthScatter,
     heightScatter,
     svgScatter,
-    tipScatter;
+    tipScatter,
+    lineScatter;
 
 var scatterHpi = 'hpi';
 var scatterInternet = 'average broadband download';
 
 function initScatterPlot() {
+
+    // set margins for plot
     marginScatter = {
         top: 20,
         right: 20,
@@ -26,30 +29,38 @@ function initScatterPlot() {
         left: 40
     };
 
+    // initialize tooltip
     tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d){
         var rv = '<b>Country: </b>' + d.ISO + '<br><b>x: </b>' + d.x + '<br><b>y: </b>' + d.y;
         return rv;
     })
 
-
+    // set width and height of plot
     widthScatter = $('#scatter').width() - marginScatter.left - marginScatter.right;
     heightScatter = $('#scatter').height() - marginScatter.top - marginScatter.bottom;
 
+    // initialize x-scale
     xScatter = d3.scale.linear()
         .range([0, widthScatter]);
 
+    // initialize y-scale
     yScatter = d3.scale.linear()
         .range([heightScatter, 0]);
 
+    // set up scatter plot
     svgScatter = d3.select('#scatter')
         .append('g')
         .attr('transform', 'translate(' + marginScatter.left + ',' + marginScatter.top + ')');
     svgScatter.call(tipScatter);
 
+    // set initial countries to add to plot
     countryScatter = ['USA', 'CAN', 'KOR'];
 
+    // get initial data
     var data = addScatterData('average broadband download', 'hpi');
+    var regressionData = determineRegression(data);
 
+    // set domain of plot
     xScatter.domain(d3.extent(data, function(d) {
         return +d.x;
     }));
@@ -57,32 +68,55 @@ function initScatterPlot() {
         return +d.y;
     }));
 
+    // set line graph
+    lineScatter = d3.svg.line()
+        .x(function(d) { return xScatter(d.x); })
+        .y(function(d) { return yScatter(d.y); });
+
+    // set x-axis
     svgScatter.append('g')
         .attr('class', 'x axis')
         .attr('transform', 'translate(0,' + heightScatter + ')')
         .call(d3.svg.axis().scale(xScatter).orient('bottom'));
 
+    // set y-axis
     svgScatter.append('g')
         .attr('class', 'y axis')
         .call(d3.svg.axis().scale(yScatter).orient('left'));
 
+    // add dots
     svgScatter.selectAll('.dot')
         .data(data)
         .enter().append('circle')
         .attr('class', 'dot')
         .attr('r', 3.5)
+
+        // set position
         .attr('cx', function(d) {
             return xScatter(d.x);
         })
         .attr('cy', function(d) {
             return yScatter(d.y);
         })
+
+        // add tooltip
         .on('mouseover', tipScatter.show)
         .on('mouseout', tipScatter.hide)
+
+        // remove country on click
         .on('click', function(d) { addCountryScatter(d.ISO, false); });
+
+    // add regression line
+    svgScatter.selectAll('.line')
+        .data(regressionData)
+        .enter().append('line')
+        .attr('class', 'line')
+        .attr('d', lineScatter);
 }
 
 function addScatterData(internetIndex, happyIndex) {
+
+    // create data container
     var data = [];
     for (var i = 0; i < countryScatter.length; i++) {
 
@@ -105,21 +139,32 @@ function addScatterData(internetIndex, happyIndex) {
 }
 
 function addCountryScatter(country, addData=true) {
-
+    
+    // decide what to do when calling this function
     if (countryScatter.includes(String(country)) && addData) return false;
     else if (addData) countryScatter.push(String(country));
-    else if (country == false)  1 + 1; 
+
+    // pass or continue doesn't work
+    else if (country == false)  1 + 1;
     else countryScatter.splice(countryScatter.indexOf(String(country)), 1);
 
+    // get data and update domain
     var data = addScatterData(scatterInternet, scatterHpi);
     xScatter.domain(d3.extent(data, function(d) { return +d.x; }));
     yScatter.domain(d3.extent(data, function(d) { return +d.y; }));
 
+    // get regression data
+    var regressionData = determineRegression(data);
+
     // update data in plot
     var circles = svgScatter.selectAll('circle').data(data);
+    var line = svgScatter.selectAll('line').data(regressionData);
+    console.log(line);
 
     // delete the unneeded data
     circles.exit().remove();
+    line.exit().remove();
+    console.log(line);
 
     // update existing points to new scale
     circles.attr('cx', function(d) { return xScatter(d.x); })
@@ -135,6 +180,10 @@ function addCountryScatter(country, addData=true) {
         .on('mouseout', tipScatter.hide)
         .on('click', function(d) { addCountryScatter(d.ISO, addData=false); });
 
+    line.enter().append('path')
+        .attr('class', 'line')
+        .attr('d', lineScatter);
+    
     // update x-axis
     svgScatter.select('.x.axis')
         .transition()
@@ -152,4 +201,48 @@ function changeDataScatter(changeInternetData=false, changeHpiData=false) {
     if (changeInternetData) scatterInternet = changeInternetData;
     if (changeHpiData) scatterHpi = changeHpiData;
     addCountryScatter(false, false);
+}
+
+// https://dracoblue.net/dev/linear-least-squares-in-javascript/
+function determineRegression(data) {
+
+    var sumX = 0,
+        sumY = 0,
+        sumXY = 0,
+        sumXX = 0,
+        count = 0;
+
+    var x = 0;
+    var y = 0;
+
+    if (data.length === 0) {
+        return [];
+    }
+
+    for (var v = 0; v < data.length; v++) {
+        x = +data[v].x;
+        y = +data[v].y;
+        sumX += x;
+        sumY += y;
+        sumXX += x*x;
+        sumXY += x*x;
+        count++;
+    }
+
+    // y = x * m + b
+    var m = (count*sumXY - sumX*sumY) / (count * sumXX - sumX*sumX);
+    var b = (sumY/count) - (m*sumX) / count;
+
+    var result = [];
+
+    for (var v = 0; v < data.length; v++) {
+        x = +data[v].x;
+        y = x * m + b;
+        result.push({
+            'x': x,
+            'y': y
+        });
+    }
+    console.log(result);
+    return result;
 }
