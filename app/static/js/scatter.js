@@ -54,11 +54,11 @@ function initScatterPlot() {
     svgScatter.call(tipScatter);
 
     // set initial countries to add to plot
-    countryScatter = ['USA', 'CAN', 'KOR'];
+    countryScatter = ['USA', 'KOR'];
 
     // get initial data
     var data = addScatterData('average broadband download', 'hpi');
-    var regressionData = determineRegression(data);
+    var regressionValues = determineRegression(data);
 
     // set domain of plot
     xScatter.domain(d3.extent(data, function(d) {
@@ -68,10 +68,17 @@ function initScatterPlot() {
         return +d.y;
     }));
 
+    console.log(xScatter.domain()[1]);
+    console.log(xScatter.range()[1], xScatter.range()[0]);
+    console.log(regressionValues[0], regressionValues[1]);
+
     // set line graph
-    lineScatter = d3.svg.line()
-        .x(function(d) { return xScatter(d.x); })
-        .y(function(d) { return yScatter(d.y); });
+    svgScatter.append('line')
+        .attr('class', 'line')
+        .attr('x1', function() { return xScatter.range()[0]; })
+        .attr('y1', function() { return yScatter(xScatter.domain()[0] * regressionValues[0] + regressionValues[1]); })
+        .attr('x2', function() { return xScatter.range()[1]; })
+        .attr('y2', function() { return yScatter(xScatter.domain()[1] * regressionValues[0] + regressionValues[1]); });
 
     // set x-axis
     svgScatter.append('g')
@@ -107,11 +114,11 @@ function initScatterPlot() {
         .on('click', function(d) { addCountryScatter(d.ISO, false); });
 
     // add regression line
-    svgScatter.selectAll('.line')
-        .data(regressionData)
-        .enter().append('line')
-        .attr('class', 'line')
-        .attr('d', lineScatter);
+    //svgScatter.selectAll('.line')
+        //.data(regressionData)
+        //.enter().append('line')
+        //.attr('class', 'line')
+        //.attr('d', lineScatter);
 }
 
 function addScatterData(internetIndex, happyIndex) {
@@ -232,17 +239,5 @@ function determineRegression(data) {
     // y = x * m + b
     var m = (count*sumXY - sumX*sumY) / (count * sumXX - sumX*sumX);
     var b = (sumY/count) - (m*sumX) / count;
-
-    var result = [];
-
-    for (var v = 0; v < data.length; v++) {
-        x = +data[v].x;
-        y = x * m + b;
-        result.push({
-            'x': x,
-            'y': y
-        });
-    }
-    console.log(result);
-    return result;
+    return [m, b];
 }

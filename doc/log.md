@@ -14,3 +14,6 @@ Finished the technical implementation of the data map and it's interactivity. Bu
 Finished the technical details of the scatter plot. All that's left is to add the regression line to the plot and make the last plot.
 
 I also finally have a good grasp of the enter().append() and exit().remove() internal workings, which should make the last plot a lot easier to make.
+
+## Friday 19-1-2018
+Was pretty ill and only worked a bit on adding the regression line to the scatter plot. Still needs some work to get done.
