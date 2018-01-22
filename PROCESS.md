@@ -17,3 +17,6 @@ I also finally have a good grasp of the enter().append() and exit().remove() int
 
 ## Friday 19-1-2018
 Was pretty ill and only worked a bit on adding the regression line to the scatter plot. Still needs some work to get done.
+
+## Monday 22-1-2018
+Started working on the grouped bar chart. Got it working with a single y-axis and all data-types. Will need to make another y-axis and make it update with buttons and the drag-functionality. Interactivity should be pretty easy.
