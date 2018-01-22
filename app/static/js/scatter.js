@@ -30,7 +30,7 @@ function initScatterPlot() {
     };
 
     // initialize tooltip
-    tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d){
+    tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
         var rv = '<b>Country: </b>' + d.ISO + '<br><b>x: </b>' + d.x + '<br><b>y: </b>' + d.y;
         return rv;
     })
@@ -54,7 +54,7 @@ function initScatterPlot() {
     svgScatter.call(tipScatter);
 
     // set initial countries to add to plot
-    countryScatter = ['USA', 'KOR'];
+    countryScatter = ['USA', 'KOR', 'AUS', 'BRA', 'NLD'];
 
     // get initial data
     var data = addScatterData('average broadband download', 'hpi');
