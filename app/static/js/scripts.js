@@ -32,6 +32,7 @@ $.getJSON('data/countryTable.json', function(data) {
     };
 });
 
+
 $(function() {    
     // disable 'right-mouse menu' to use right mouse button later
     // document.oncontextmenu = function() { return false; };
@@ -74,6 +75,7 @@ $(function() {
             // initial data should show download speed
             addDataToMap('average broadband download');
             initScatterPlot();
+            initBarChart();
         });
 
     // create listeners for all buttons defined in buttons
