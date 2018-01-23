@@ -33,7 +33,7 @@ function initBarChart() {
 
     // initializes the tooltip
     tipBar = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>Country: </b>' + d.value; 
+        var rv = '<b>Country: </b>' + d.value;
         return rv;
     });
 
@@ -119,13 +119,14 @@ function updateBarChart() {
     // create groups
     var slice = svgBar.selectAll('.slice').data(data);
 
-    slice.exit().remove();
+    slice.exit().remove().transition().duration(750);
 
     slice.attr('transform', function(d) {
         return 'translate(' + x0Bar(d.country) + ',0)';
     });
 
     slice.enter().append('g')
+        .transition().duration(750)
         .attr('class', 'slice')
         .attr('transform', function(d) {
             return 'translate(' + x0Bar(d.country) +',0)';
@@ -134,9 +135,10 @@ function updateBarChart() {
     var bars = slice.selectAll('rect')
         .data(function(d) { return d.values; });
 
-    bars.exit().remove();
+    bars.exit().remove().transition().duration(750);
 
-    bars.attr('width', x1Bar.rangeBand())
+    bars.transition().duration(750)
+        .attr('width', x1Bar.rangeBand())
         .attr('x', function(d) { return x1Bar(d.label); })
         .style('fill', function(d) { return colorBar(d.label); })
         .attr('y', function(d) {
@@ -157,6 +159,7 @@ function updateBarChart() {
         });
     
     bars.enter().append('rect')
+        .transition().duration(750)
         .attr('width', x1Bar.rangeBand())
         .attr('x', function(d) { return x1Bar(d.label); })
         .style('fill', function(d) { return colorBar(d.label); })
@@ -176,17 +179,23 @@ function updateBarChart() {
                 return heightBar - y2Bar(d.value);
             }
         });
+        bars.on('click', function(d, i) {
+            console.log(d3.select(this.parentNode).data())
+            countryBar.splice(countryBar.indexOf(d3.select(this.parentNode).data()[0].country), 1);
+            updateBarChart();
+        })
+        .on('mouseover', tipBar.show)
+        .on('mouseout', tipBar.hide);
 
-    d3.select('.x')
+    svgBar.select('.x')
         .transition().duration(750)
         .call(d3.svg.axis().scale(x0Bar).orient('bottom'));
 
-    d3.select('.y1').transition().duration(750)
+    svgBar.select('.y1').transition().duration(750)
         .call(d3.svg.axis().scale(y1Bar).orient('left'));
 
-    d3.select('.y2').transition().duration(750)
+    svgBar.select('.y2').transition().duration(750)
         .call(d3.svg.axis().scale(y2Bar).orient('right'));
-
 }
 
 // internetIndex is same as the one from scatter

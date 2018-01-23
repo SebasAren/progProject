@@ -119,22 +119,24 @@ function addCountryScatter(country, addData=true) {
     var circles = svgScatter.selectAll('circle').data(data);
 
     // delete the unneeded data
-    circles.exit().remove();
+    circles.exit().remove().transition().duration(750);
 
     // update existing points to new scale
-    circles.attr('cx', function(d) { return xScatter(d.x); })
+    circles.transition().duration(750)
+        .attr('cx', function(d) { return xScatter(d.x); })
         .attr('cy', function(d) { return yScatter(d.y); });
 
     // add new data points
     circles.enter().append('circle')
+        .transition().duration(750)
         .attr('class', 'dot')
         .attr('r', 3.5)
         .attr('cx', function(d) { return xScatter(d.x); })
         .attr('cy', function(d) { return yScatter(d.y); })
-        .on('mouseover', tipScatter.show)
+
+    circles.on('mouseover', tipScatter.show)
         .on('mouseout', tipScatter.hide)
         .on('click', function(d) { addCountryScatter(d.ISO, addData=false); });
-
     // update x-axis
     svgScatter.select('.x.axis')
         .transition()
