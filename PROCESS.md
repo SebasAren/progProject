@@ -20,3 +20,6 @@ Was pretty ill and only worked a bit on adding the regression line to the scatte
 
 ## Monday 22-1-2018
 Started working on the grouped bar chart. Got it working with a single y-axis and all data-types. Will need to make another y-axis and make it update with buttons and the drag-functionality. Interactivity should be pretty easy.
+
+## Tuesday 23-1-2018
+Today I finished the grouped bar chart with double y-axis. I also changed the type of visualization it has become. It will now show a country as a group with 2 bars, one showing the selected internet quality parameter and the other showing the selected economic parameter.
