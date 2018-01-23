@@ -127,10 +127,16 @@ var controlButtons = function(type) {
         });
         if (type == 'map') {
             addDataToMap(input.attr('name'));
+            dataBar[1] = input.attr('name')
             changeDataScatter(input.attr('name'), false);
+            updateBarChart();
         }
         if (type == 'right') {
             changeDataScatter(false, input.attr('name'));
+        }
+        if (type == 'left') {
+            dataBar[0] = input.attr('name')
+            updateBarChart();
         }
         input.attr('class', 'btn btn-success ' + type + '-btn');
     };
