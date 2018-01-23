@@ -200,6 +200,10 @@ function pickController(country) {
         if ($('.hover-plot').children()[1].id == 'scatter') {
             addCountryScatter(country);
         }
+        else {
+            countryBar.push(country);
+            updateBarChart();
+        }
     }
     $('.hover-plot').removeClass('hover-plot');
 }

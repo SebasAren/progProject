@@ -204,10 +204,15 @@ function updateData() {
 function valueBarUpdate(currentCountry) {
     var rv = [];
     for (var i = 0; i < dataBar.length; i++) {
-        rv.push({
-            'value': +internetData.find(item => item.ISO === currentCountry)[dataBar[i]],
-            'label': dataBar[i]
-        })
+        try {
+            rv.push({
+                'value': +internetData.find(item => item.ISO === currentCountry)[dataBar[i]],
+                'label': dataBar[i]
+            })
+        }
+        catch(error) {
+            console.log('Fix je shit sebba');
+        }
     }
     return rv;
 }
