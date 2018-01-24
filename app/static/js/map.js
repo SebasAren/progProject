@@ -21,9 +21,6 @@ function addDataToMap(dataIndex) {
         }
     });
 
-    // set the new map scale
-    var scale = setMapScale(dataIndex);
-
     /* Remove the old legend. 
      * While this is a bit of a 'hacky way to do it' it seems like datamaps 
      * is actually working pretty smoothly when doing it this way.
@@ -31,6 +28,8 @@ function addDataToMap(dataIndex) {
      * them not worth my time to fix.
      */
     $('.datamaps-legend').remove();
+    // set the new map scale
+    var scale = setMapScale(dataIndex);
 
     // remake the legend
     var mapLegend = {

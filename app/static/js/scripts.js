@@ -41,8 +41,8 @@ $(function() {
     // init the map
     map = new Datamap({
         element: document.getElementById('map'),
-        // to make responsive work I will need a lot more listeners
-        //responsive: true,
+        // apparently needed to not ruin my page layout
+        responsive: true,
         geographyConfig: {
             // make border of countries black for more contrast
             borderColor: '#000000',
