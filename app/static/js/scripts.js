@@ -33,6 +33,7 @@ $.getJSON('data/countryTable.json', function(data) {
 });
 
 
+// jquery version of on window load
 $(function() {    
     // disable 'right-mouse menu' to use right mouse button later
     // document.oncontextmenu = function() { return false; };
@@ -40,14 +41,17 @@ $(function() {
     // init the map
     map = new Datamap({
         element: document.getElementById('map'),
-        responsive: true,
+        // to make responsive work I will need a lot more listeners
+        //responsive: true,
         geographyConfig: {
+            // make border of countries black for more contrast
             borderColor: '#000000',
             popupTemplate: function(geography, data) {
                 return '<div class="hoverinfo">' + geography.properties.name +'<br>' + data.value + ' ';
             }
         },
         fills: {
+            // These are fancy green colors defined by colorbrewer
             0: colorbrewer.YlGn['9'][0],
             1: colorbrewer.YlGn['9'][1],
             2: colorbrewer.YlGn['9'][2],  
@@ -67,19 +71,21 @@ $(function() {
         .defer(d3.json, 'data/hpi.json')
         .await(function(error, data1, data2) {
             if (error) throw error;
+
+            // make datasets globally available
             internetData = data1;
             happyData = data2;
-            console.log(happyData);
-            console.log(internetData);
 
             // initial data should show download speed
             addDataToMap('average broadband download');
+
+            // initialize the other two plots
             initScatterPlot();
             initBarChart();
         });
 
     // create listeners for all buttons defined in buttons
-    $.each(buttons, function(i, button) {
+    $.each(buttons, function(_, button) {
         $('.' + button + '-btn').click(function() {
             controlButtons(button)($(this));
         });
@@ -88,6 +94,8 @@ $(function() {
     // triggered on mousedown on country in the datamap
     $('.datamaps-subunit').mousedown(function(event) {
 
+        // planned to make additional functionality for the right-mouse button
+        // will now block right mouse from triggering drag functionallity
         if (event.button == 2) {
             // TODO: create a tooltip with a link to wikipedia?
 
@@ -107,8 +115,6 @@ $(function() {
                 var country = $('.drag-div').html();
                 $('.drag-div').remove();
                 pickController(country);
-
-                // remove draggable div and handle data transfer
 
                 // remove listener again
                 $(document).off('mouseup');
@@ -176,9 +182,12 @@ function dragController(clicked, country) {
     // create div to be draggable
     $('<div class="drag-div"/>')
         .css({
+            // the 150 is half the size of a .drag-div
             'left': (country.pageX - 150) + 'px',
-            'top': (country.pageY - 150) + 'px',
+            'top': (country.pageY - 150) + 'px'
         })
+
+        // it should be nested on the body and contain info on the country
         .appendTo($(document.body))
         .html(clicked[0].classList[1])
 
@@ -196,14 +205,18 @@ function dragController(clicked, country) {
 
 // triggered when the draggable is droppped
 function pickController(country) {
+    // check if a plot is actually being hovered over
     if ($('.hover-plot').length != 0) {
         if ($('.hover-plot').children()[1].id == 'scatter') {
+            // add the country to the scater plot
             addCountryScatter(country);
         }
         else {
+            // only other option is the bar chart
             countryBar.push(country);
             updateBarChart();
         }
     }
+    // when visualization has been updated remove the hover "class"
     $('.hover-plot').removeClass('hover-plot');
 }

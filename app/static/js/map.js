@@ -21,19 +21,33 @@ function addDataToMap(dataIndex) {
         }
     });
 
+    // set the new map scale
     var scale = setMapScale(dataIndex);
 
+    /* Remove the old legend. 
+     * While this is a bit of a 'hacky way to do it' it seems like datamaps 
+     * is actually working pretty smoothly when doing it this way.
+     * More fancy 'd3-type' changes caused all kinds of complications, making
+     * them not worth my time to fix.
+     */
+    $('.datamaps-legend').remove();
+
+    // remake the legend
     var mapLegend = {
         legendTitle: dataIndex,
         defaultFillName: 'No data',
         labels: {}
     };
 
+    // all data entries will be 9 categories, so again a bit of an 'ugly' fix
     for (var i = 0; i < 9; i++) {
+
+        // this functions gives you the upper and lower bounds of a quantized scale
         var bounds = scale.invertExtent(i);
         mapLegend.labels[i] = String(parseInt(bounds[0])) + '-' + String(parseInt(bounds[1]));
     }
 
+    // prepare the new data to be visualized
     $.each(internetData, function(_, entry) {
         plotData[entry.ISO] = {
             value: entry[dataIndex],
@@ -50,13 +64,13 @@ var setMapScale = function(dataIndex) {
 
     // ES6 version of python range()
     var range = [...Array(9).keys()];
-    $('.datamaps-legend').remove();
     
     var domainScale = [];
     $.each(internetData, function(_, entry) {
         domainScale.push(entry[dataIndex]);
     }) 
 
+    // this will return the actual scale to be used
     return d3.scale.quantile()
         .domain(domainScale)
         .range(range);
