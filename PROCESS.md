@@ -23,3 +23,6 @@ Started working on the grouped bar chart. Got it working with a single y-axis an
 
 ## Tuesday 23-1-2018
 Today I finished the grouped bar chart with double y-axis. I also changed the type of visualization it has become. It will now show a country as a group with 2 bars, one showing the selected internet quality parameter and the other showing the selected economic parameter.
+
+## Wednesday 24-1-2018
+Today I finished the regression line and the last bit of interactivity that needed to be done. All that's left is making the axis labels and plot titles. I am very pleased with the "end result".
