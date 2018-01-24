@@ -14,7 +14,8 @@ var xScatter,
     heightScatter,
     svgScatter,
     tipScatter,
-    lineScatter;
+    lineScatter,
+    colorScatter;
 
 var scatterHpi = 'hpi';
 var scatterInternet = 'average broadband download';
@@ -24,7 +25,7 @@ function initScatterPlot() {
     // set margins for plot
     marginScatter = {
         top: 20,
-        right: 20,
+        right: 130,
         bottom: 30,
         left: 40
     };
@@ -48,6 +49,8 @@ function initScatterPlot() {
         .range([heightScatter, 0]);
 
     // set up scatter plot
+    colorScatter = d3.scale.category20();
+
     svgScatter = d3.select('#scatter')
         .append('g')
         .attr('transform', 'translate(' + marginScatter.left + ',' + marginScatter.top + ')');
@@ -58,9 +61,14 @@ function initScatterPlot() {
 
     // get initial data
     var data = addScatterData('average broadband download', 'hpi');
-    var regressionValues = determineRegression(data);
+    var xData = data.map(function(d) { return d.x; });
+    var yData = data.map(function(d) { return d.y; });
+    var regression = leastSquaresequation(xData, yData);
 
-    // set domain of plot
+    lineScatter = d3.svg.line()
+        .x(function(d) { return xScatter(d.x); })
+        .y(function(d) { return yScatter(regression(d.x)); })
+
     xScatter.domain(d3.extent(data, function(d) {
         return +d.x;
     }));
@@ -68,19 +76,19 @@ function initScatterPlot() {
         return +d.y;
     }));
 
-    console.log(xScatter.domain()[1]);
-    console.log(xScatter.range()[1], xScatter.range()[0]);
-    console.log(regressionValues[0], regressionValues[1]);
+    colorScatter.domain(countryScatter);
 
-    // set line graph
-    svgScatter.append('line')
+    svgScatter.selectAll('path')
+        .data([data])
+        .enter().append('path')
         .attr('class', 'line')
-        .attr('x1', function() { return xScatter.range()[0]; })
-        .attr('y1', function() { return yScatter(xScatter.domain()[0] * regressionValues[0] + regressionValues[1]); })
-        .attr('x2', function() { return xScatter.range()[1]; })
-        .attr('y2', function() { return yScatter(xScatter.domain()[1] * regressionValues[0] + regressionValues[1]); });
+        .attr('d', lineScatter);
 
-    // set x-axis
+    svgScatter.append('g')
+        .attr('class', 'scatter-legend')
+        .attr('transform', 'translate(' + (widthScatter + marginScatter.right / 2) + ',0)')
+        .call(d3.legend.color().scale(colorScatter).labels(countryScatter));
+
     svgScatter.append('g')
         .attr('class', 'x axis')
         .attr('transform', 'translate(0,' + heightScatter + ')')
@@ -96,6 +104,9 @@ function initScatterPlot() {
         .data(data)
         .enter().append('circle')
         .attr('class', 'dot')
+        .style('fill', function(d) {
+            return colorScatter(d.ISO);
+        })
         .attr('r', 3.5)
 
         // set position
@@ -113,12 +124,6 @@ function initScatterPlot() {
         // remove country on click
         .on('click', function(d) { addCountryScatter(d.ISO, false); });
 
-    // add regression line
-    //svgScatter.selectAll('.line')
-        //.data(regressionData)
-        //.enter().append('line')
-        //.attr('class', 'line')
-        //.attr('d', lineScatter);
 }
 
 function addScatterData(internetIndex, happyIndex) {
@@ -159,37 +164,53 @@ function addCountryScatter(country, addData=true) {
     var data = addScatterData(scatterInternet, scatterHpi);
     xScatter.domain(d3.extent(data, function(d) { return +d.x; }));
     yScatter.domain(d3.extent(data, function(d) { return +d.y; }));
+    colorScatter.domain(countryScatter);
 
     // get regression data
-    var regressionData = determineRegression(data);
+    var xData = data.map(function(d) { return d.x; });
+    var yData = data.map(function(d) { return d.y; });
+    var regression = leastSquaresequation(xData, yData);
+
+    lineScatter.x(function(d) { return xScatter(d.x); })
+        .y(function(d) { return yScatter(regression(d.x)); });
+
+    
+    var lineElement = svgScatter.selectAll('path').data([data]);
+    lineElement.exit().remove().transition().duration(750);
+
+    lineElement
+        .transition().duration(750)
+        .attr('d', lineScatter);
+
+    lineElement.enter().append('path')   
+        .transition().duration(750)
+        .attr('class', 'line')
+        .attr('d', lineScatter);
 
     // update data in plot
     var circles = svgScatter.selectAll('circle').data(data);
-    var line = svgScatter.selectAll('line').data(regressionData);
-    console.log(line);
 
     // delete the unneeded data
-    circles.exit().remove();
-    line.exit().remove();
-    console.log(line);
+    circles.exit().remove().transition().duration(750);
 
     // update existing points to new scale
-    circles.attr('cx', function(d) { return xScatter(d.x); })
-        .attr('cy', function(d) { return yScatter(d.y); });
+    circles.transition().duration(750)
+        .attr('cx', function(d) { return xScatter(d.x); })
+        .attr('cy', function(d) { return yScatter(d.y); })
+        .style('fill', function(d) { return colorScatter(d.ISO); });
 
     // add new data points
     circles.enter().append('circle')
+        .transition().duration(750)
         .attr('class', 'dot')
         .attr('r', 3.5)
+        .style('fill', function(d) { return colorScatter(d.ISO); })
         .attr('cx', function(d) { return xScatter(d.x); })
         .attr('cy', function(d) { return yScatter(d.y); })
-        .on('mouseover', tipScatter.show)
+
+    circles.on('mouseover', tipScatter.show)
         .on('mouseout', tipScatter.hide)
         .on('click', function(d) { addCountryScatter(d.ISO, addData=false); });
-
-    line.enter().append('path')
-        .attr('class', 'line')
-        .attr('d', lineScatter);
     
     // update x-axis
     svgScatter.select('.x.axis')
@@ -202,6 +223,8 @@ function addCountryScatter(country, addData=true) {
         .transition()
         .duration(750)
         .call(d3.svg.axis().scale(yScatter).orient('left'));
+
+    svgScatter.select('.scatter-legend').call(d3.legend.color().scale(colorScatter).labels(countryScatter));
 }
 
 function changeDataScatter(changeInternetData=false, changeHpiData=false) {
@@ -209,35 +232,29 @@ function changeDataScatter(changeInternetData=false, changeHpiData=false) {
     if (changeHpiData) scatterHpi = changeHpiData;
     addCountryScatter(false, false);
 }
+//https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
+function leastSquaresequation(XaxisData, Yaxisdata) {
+    var ReduceAddition = function(prev, cur) { return prev + cur; };
+    
+    // finding the mean of Xaxis and Yaxis data
+    var xBar = XaxisData.reduce(ReduceAddition) * 1.0 / XaxisData.length;
+    var yBar = Yaxisdata.reduce(ReduceAddition) * 1.0 / Yaxisdata.length;
 
-// https://dracoblue.net/dev/linear-least-squares-in-javascript/
-function determineRegression(data) {
-
-    var sumX = 0,
-        sumY = 0,
-        sumXY = 0,
-        sumXX = 0,
-        count = 0;
-
-    var x = 0;
-    var y = 0;
-
-    if (data.length === 0) {
-        return [];
+    var SquareXX = XaxisData.map(function(d) { return Math.pow(d - xBar, 2); })
+        .reduce(ReduceAddition);
+    
+    var ssYY = Yaxisdata.map(function(d) { return Math.pow(d - yBar, 2); })
+        .reduce(ReduceAddition);
+      
+    var MeanDiffXY = XaxisData.map(function(d, i) { return (d - xBar) * (Yaxisdata[i] - yBar); })
+        .reduce(ReduceAddition);
+      
+    var slope = MeanDiffXY / SquareXX;
+    var intercept = yBar - (xBar * slope);
+    
+// returning regression function
+    return function(x){
+      return x*slope+intercept;
     }
 
-    for (var v = 0; v < data.length; v++) {
-        x = +data[v].x;
-        y = +data[v].y;
-        sumX += x;
-        sumY += y;
-        sumXX += x*x;
-        sumXY += x*x;
-        count++;
-    }
-
-    // y = x * m + b
-    var m = (count*sumXY - sumX*sumY) / (count * sumXX - sumX*sumX);
-    var b = (sumY/count) - (m*sumX) / count;
-    return [m, b];
-}
+  }

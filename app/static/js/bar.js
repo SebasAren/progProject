@@ -9,7 +9,8 @@
 
 var x0Bar,
     x1Bar,
-    yBar,
+    y1Bar,
+    y2Bar,
     countryBar,
     marginBar,
     widthBar,
@@ -19,21 +20,20 @@ var x0Bar,
     colorBar;
 
 // container for data selections
-var barInternet = 'average broadband download';
-var barEconomic = ['Nominal GDP', 'average broadband download'];
+var dataBar = ['Nominal GDP', 'average broadband download'];
 
 // initializes the bar chart
 function initBarChart() {
     marginBar = {
         top: 20,
-        right: 20,
-        bottom: 30,
+        right: 60,
+        bottom: 70,
         left: 60
     };
 
     // initializes the tooltip
     tipBar = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>Country: </b>' + d.ISO; 
+        var rv = '<b>' + d.label + ': </b>' + d.value;
         return rv;
     });
 
@@ -41,7 +41,7 @@ function initBarChart() {
     widthBar = $('#bar').width() - marginBar.left - marginBar.right;
     heightBar = $('#bar').height() - marginBar.top - marginBar.bottom;
 
-    // setup first x-scale
+    // setup first x-scale: 0.1 is padding
     x0Bar = d3.scale.ordinal()
         .rangeRoundBands([0, widthBar], .1);
 
@@ -49,17 +49,20 @@ function initBarChart() {
     x1Bar = d3.scale.ordinal();
 
     // setup y scaling
-    yBar = d3.scale.linear()
+    y1Bar = d3.scale.linear()
+        .range([heightBar, 0]);
+
+    y2Bar = d3.scale.linear()
         .range([heightBar, 0]);
 
     // setup color scaling
     colorBar = d3.scale.ordinal()
-        .range(["#ca0020","#f4a582","#d5d5d5","#92c5de","#0571b0"]);
+        .range(['#ca0020','#f4a582']);
 
     // setup svg with margins
     svgBar = d3.select('#bar')
         .append('g')
-        .attr('transform', 'translate(' + marginBar.left +',' + marginBar.top + ')')
+        .attr('transform', 'translate(' + marginBar.left + ',' + marginBar.top + ')')
         .call(tipBar);
 
     // initialize countries for first plot
@@ -71,10 +74,19 @@ function initBarChart() {
         .attr('transform', 'translate(0,' + heightBar + ')')
         .call(d3.svg.axis().scale(x0Bar).tickSize(0).orient('bottom'));
 
-    // create y-axis
+    // create y-axis 1
     svgBar.append('g')
-        .attr('class', 'y axis')
-        .call(d3.svg.axis().scale(yBar).orient('left'));
+        .attr('class', 'y1 axis')
+        .call(d3.svg.axis().scale(y1Bar).orient('left'));
+
+    svgBar.append('g')
+        .attr('class', 'y2 axis')
+        .attr('transform', 'translate(' + widthBar + ',0)')
+        .call(d3.svg.axis().scale(y2Bar).orient('right'));
+
+    svgBar.append('g')
+        .attr('class', 'bar-legend')
+        .attr('transform', 'translate(0,' + (heightBar + (marginBar.bottom / 2)) + ')')
 
     // update the bar chart with the actua data
     updateBarChart();
@@ -83,67 +95,149 @@ function initBarChart() {
 // function to update the bar chart
 function updateBarChart() {
     var data = updateData();
-    console.log(data);
+
+    colorBar = d3.scale.ordinal()
+        .range(['#ca0020','#f4a582']);
 
     // update domain of the goups
     x0Bar.domain(countryBar);
 
     // update the domain to correspond to each data type
-    x1Bar.domain(barEconomic).rangeRoundBands([0, x0Bar.rangeBand()]);
+    x1Bar.domain(dataBar).rangeRoundBands([0, x0Bar.rangeBand()]);
 
     // update the y scaling to scale to the maximum data
-    yBar.domain([0, d3.max(data, function(country) {
+    y1Bar.domain([0, d3.max(data, function(country) {
         return d3.max(country.values, function(d) {
-            return d.value;
+            if (d.label == dataBar[0]) {
+                return d.value;
+            }
         });
     })]);
 
+    y2Bar.domain([0, d3.max(data, function(country) {
+        return d3.max(country.values, function(d) {
+            if (d.label == dataBar[1]) {
+                return d.value;
+            }
+        })
+    })]);
+
+    svgBar.select('.bar-legend').call(d3.legend.color().scale(x1Bar).labels(dataBar));
+
+    // update color of the legend
+    $.each($('#bar').find('.swatch'), function(i, _) {
+        $(this).css('fill', colorBar.range()[i]);
+    })
+
     // create groups
-    var slice = svgBar.selectAll('.slice')
-        .data(data)
-        .enter().append('g')
+    var slice = svgBar.selectAll('.slice').data(data);
+
+    // remove obsolete data points
+    slice.exit().remove().transition().duration(750);
+
+    slice.attr('transform', function(d) {
+        return 'translate(' + x0Bar(d.country) + ',0)';
+    });
+
+    slice.enter().append('g')
+        .transition().duration(750)
         .attr('class', 'slice')
         .attr('transform', function(d) {
             return 'translate(' + x0Bar(d.country) +',0)';
         });
 
-    slice.selectAll('rect')
-        .data(function(d) { return d.values; })
-    .enter().append('rect')
+    var bars = slice.selectAll('rect')
+        .data(function(d) { return d.values; });
+
+    bars.exit().remove().transition().duration(750);
+
+    bars.transition().duration(750)
         .attr('width', x1Bar.rangeBand())
         .attr('x', function(d) { return x1Bar(d.label); })
         .style('fill', function(d) { return colorBar(d.label); })
-        .attr('y', function(d) { return yBar(d.value); })
-        .attr('height', function(d) { return heightBar - yBar(d.value); });
+        .attr('y', function(d) {
+            if (d.label == dataBar[0]) {
+                return y1Bar(d.value);
+            }
+            else {
+                return y2Bar(d.value);
+            }
+        })
+        .attr('height', function(d) {
+            if (d.label == dataBar[0]) {
+                return heightBar - y1Bar(d.value);
+            }
+            else {
+                return heightBar - y2Bar(d.value);
+            }
+        });
+    
+    // add new databars to the plot
+    bars.enter().append('rect')
+        .transition().duration(750)
+        .attr('width', x1Bar.rangeBand())
+        .attr('x', function(d) { return x1Bar(d.label); })
+        .style('fill', function(d) { return colorBar(d.label); })
+        .attr('y', function(d) {
+            if (d.label == dataBar[0]) {
+                return y1Bar(d.value);
+            }
+            else {
+                return y2Bar(d.value);
+            }
+        })
+        .attr('height', function(d) {
+            if (d.label == dataBar[0]) {
+                return heightBar - y1Bar(d.value);
+            }
+            else {
+                return heightBar - y2Bar(d.value);
+            }
+        });
 
-    d3.select('.x')
+    // add tooltip and remova functionality to bars
+    bars.on('click', function(d, i) {
+            countryBar.splice(countryBar.indexOf(d3.select(this.parentNode).data()[0].country), 1);
+            updateBarChart();
+        })
+        .on('mouseover', tipBar.show)
+        .on('mouseout', tipBar.hide);
+
+    svgBar.select('.x')
         .transition().duration(750)
         .call(d3.svg.axis().scale(x0Bar).orient('bottom'));
 
-    d3.select('.y').transition().duration(750)
-        .call(d3.svg.axis().scale(yBar).orient('left'));
+    svgBar.select('.y1').transition().duration(750)
+        .call(d3.svg.axis().scale(y1Bar).orient('left'));
 
-
+    svgBar.select('.y2').transition().duration(750)
+        .call(d3.svg.axis().scale(y2Bar).orient('right'));
 }
 
 // internetIndex is same as the one from scatter
 function updateData() {
     var data = [];
     for (var i = 0; i < countryBar.length; i++) {
-        data.push({
-            'country': countryBar[i],
-            'values': valueBarUpdate(countryBar[i])
-        })
+        try {
+            data.push({
+                'country': countryBar[i],
+                'values': valueBarUpdate(countryBar[i])
+            })
+        }
+        catch(error) {
+            console.log('works');
+            countryBar.splice(i, 1);
+        }
     }
     return data;
 }
 
 function valueBarUpdate(currentCountry) {
     var rv = [];
-    for (var i = 0; i < barEconomic.length; i++) {
+    for (var i = 0; i < dataBar.length; i++) {
         rv.push({
-            'value': +internetData.find(item => item.ISO === currentCountry)[barEconomic[i]],
-            'label': barEconomic[i]
+            'value': +internetData.find(item => item.ISO === currentCountry)[dataBar[i]],
+            'label': dataBar[i]
         })
     }
     return rv;
