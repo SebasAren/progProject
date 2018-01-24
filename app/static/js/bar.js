@@ -27,13 +27,13 @@ function initBarChart() {
     marginBar = {
         top: 20,
         right: 60,
-        bottom: 30,
+        bottom: 70,
         left: 60
     };
 
     // initializes the tooltip
     tipBar = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>Country: </b>' + d.value;
+        var rv = '<b>' + d.label + ': </b>' + d.value;
         return rv;
     });
 
@@ -41,7 +41,7 @@ function initBarChart() {
     widthBar = $('#bar').width() - marginBar.left - marginBar.right;
     heightBar = $('#bar').height() - marginBar.top - marginBar.bottom;
 
-    // setup first x-scale
+    // setup first x-scale: 0.1 is padding
     x0Bar = d3.scale.ordinal()
         .rangeRoundBands([0, widthBar], .1);
 
@@ -62,7 +62,7 @@ function initBarChart() {
     // setup svg with margins
     svgBar = d3.select('#bar')
         .append('g')
-        .attr('transform', 'translate(' + marginBar.left +',' + marginBar.top + ')')
+        .attr('transform', 'translate(' + marginBar.left + ',' + marginBar.top + ')')
         .call(tipBar);
 
     // initialize countries for first plot
@@ -84,6 +84,10 @@ function initBarChart() {
         .attr('transform', 'translate(' + widthBar + ',0)')
         .call(d3.svg.axis().scale(y2Bar).orient('right'));
 
+    svgBar.append('g')
+        .attr('class', 'bar-legend')
+        .attr('transform', 'translate(0,' + (heightBar + (marginBar.bottom / 2)) + ')')
+
     // update the bar chart with the actua data
     updateBarChart();
 }
@@ -91,7 +95,9 @@ function initBarChart() {
 // function to update the bar chart
 function updateBarChart() {
     var data = updateData();
-    console.log(data);
+
+    colorBar = d3.scale.ordinal()
+        .range(['#ca0020','#f4a582']);
 
     // update domain of the goups
     x0Bar.domain(countryBar);
@@ -116,9 +122,17 @@ function updateBarChart() {
         })
     })]);
 
+    svgBar.select('.bar-legend').call(d3.legend.color().scale(x1Bar).labels(dataBar));
+
+    // update color of the legend
+    $.each($('#bar').find('.swatch'), function(i, _) {
+        $(this).css('fill', colorBar.range()[i]);
+    })
+
     // create groups
     var slice = svgBar.selectAll('.slice').data(data);
 
+    // remove obsolete data points
     slice.exit().remove().transition().duration(750);
 
     slice.attr('transform', function(d) {
@@ -158,6 +172,7 @@ function updateBarChart() {
             }
         });
     
+    // add new databars to the plot
     bars.enter().append('rect')
         .transition().duration(750)
         .attr('width', x1Bar.rangeBand())
@@ -179,8 +194,9 @@ function updateBarChart() {
                 return heightBar - y2Bar(d.value);
             }
         });
-        bars.on('click', function(d, i) {
-            console.log(d3.select(this.parentNode).data())
+
+    // add tooltip and remova functionality to bars
+    bars.on('click', function(d, i) {
             countryBar.splice(countryBar.indexOf(d3.select(this.parentNode).data()[0].country), 1);
             updateBarChart();
         })
@@ -202,10 +218,16 @@ function updateBarChart() {
 function updateData() {
     var data = [];
     for (var i = 0; i < countryBar.length; i++) {
-        data.push({
-            'country': countryBar[i],
-            'values': valueBarUpdate(countryBar[i])
-        })
+        try {
+            data.push({
+                'country': countryBar[i],
+                'values': valueBarUpdate(countryBar[i])
+            })
+        }
+        catch(error) {
+            console.log('works');
+            countryBar.splice(i, 1);
+        }
     }
     return data;
 }
@@ -213,15 +235,10 @@ function updateData() {
 function valueBarUpdate(currentCountry) {
     var rv = [];
     for (var i = 0; i < dataBar.length; i++) {
-        try {
-            rv.push({
-                'value': +internetData.find(item => item.ISO === currentCountry)[dataBar[i]],
-                'label': dataBar[i]
-            })
-        }
-        catch(error) {
-            console.log('Fix je shit sebba');
-        }
+        rv.push({
+            'value': +internetData.find(item => item.ISO === currentCountry)[dataBar[i]],
+            'label': dataBar[i]
+        })
     }
     return rv;
 }

@@ -13,7 +13,8 @@ var xScatter,
     widthScatter,
     heightScatter,
     svgScatter,
-    tipScatter;
+    tipScatter,
+    colorScatter;
 
 var scatterHpi = 'hpi';
 var scatterInternet = 'average broadband download';
@@ -21,7 +22,7 @@ var scatterInternet = 'average broadband download';
 function initScatterPlot() {
     marginScatter = {
         top: 20,
-        right: 20,
+        right: 130,
         bottom: 30,
         left: 40
     };
@@ -41,6 +42,8 @@ function initScatterPlot() {
     yScatter = d3.scale.linear()
         .range([heightScatter, 0]);
 
+    colorScatter = d3.scale.category20();
+
     svgScatter = d3.select('#scatter')
         .append('g')
         .attr('transform', 'translate(' + marginScatter.left + ',' + marginScatter.top + ')');
@@ -57,6 +60,13 @@ function initScatterPlot() {
         return +d.y;
     }));
 
+    colorScatter.domain(countryScatter);
+
+    svgScatter.append('g')
+        .attr('class', 'scatter-legend')
+        .attr('transform', 'translate(' + (widthScatter + marginScatter.right / 2) + ',0)')
+        .call(d3.legend.color().scale(colorScatter).labels(countryScatter));
+
     svgScatter.append('g')
         .attr('class', 'x axis')
         .attr('transform', 'translate(0,' + heightScatter + ')')
@@ -70,6 +80,9 @@ function initScatterPlot() {
         .data(data)
         .enter().append('circle')
         .attr('class', 'dot')
+        .style('fill', function(d) {
+            return colorScatter(d.ISO);
+        })
         .attr('r', 3.5)
         .attr('cx', function(d) {
             return xScatter(d.x);
@@ -114,6 +127,7 @@ function addCountryScatter(country, addData=true) {
     var data = addScatterData(scatterInternet, scatterHpi);
     xScatter.domain(d3.extent(data, function(d) { return +d.x; }));
     yScatter.domain(d3.extent(data, function(d) { return +d.y; }));
+    colorScatter.domain(countryScatter);
 
     // update data in plot
     var circles = svgScatter.selectAll('circle').data(data);
@@ -124,13 +138,15 @@ function addCountryScatter(country, addData=true) {
     // update existing points to new scale
     circles.transition().duration(750)
         .attr('cx', function(d) { return xScatter(d.x); })
-        .attr('cy', function(d) { return yScatter(d.y); });
+        .attr('cy', function(d) { return yScatter(d.y); })
+        .style('fill', function(d) { return colorScatter(d.ISO); });
 
     // add new data points
     circles.enter().append('circle')
         .transition().duration(750)
         .attr('class', 'dot')
         .attr('r', 3.5)
+        .style('fill', function(d) { return colorScatter(d.ISO); })
         .attr('cx', function(d) { return xScatter(d.x); })
         .attr('cy', function(d) { return yScatter(d.y); })
 
@@ -148,6 +164,8 @@ function addCountryScatter(country, addData=true) {
         .transition()
         .duration(750)
         .call(d3.svg.axis().scale(yScatter).orient('left'));
+
+    svgScatter.select('.scatter-legend').call(d3.legend.color().scale(colorScatter).labels(countryScatter));
 }
 
 function changeDataScatter(changeInternetData=false, changeHpiData=false) {
