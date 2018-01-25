@@ -26,3 +26,6 @@ Today I finished the grouped bar chart with double y-axis. I also changed the ty
 
 ## Wednesday 24-1-2018
 Today I finished the regression line and the last bit of interactivity that needed to be done. All that's left is making the axis labels and plot titles. I am very pleased with the "end result".
+
+## Thursday 25-1-2018
+Didn't have any motivation to work on the project today, so decided to take my mind of things a bit and work a bit on the website of my study association, which is a django-based website. This was really fun and educational. At the end of the day I got a good idea for the draggable divs. I will place the flag of the country selected instead of just the ugly name of the country. I want to have this finished before my presentation tomorrow.
