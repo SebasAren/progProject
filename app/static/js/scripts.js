@@ -232,6 +232,7 @@ function pickController(country) {
         else {
             // check if country is already in plot
             if (countryBar.includes(String(country))) {
+                $('.hover-plot').removeClass('hover-plot');
                 return false;
             }
             countryBar.push(country);
