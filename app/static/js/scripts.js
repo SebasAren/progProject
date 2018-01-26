@@ -228,8 +228,12 @@ function pickController(country) {
             // add the country to the scater plot
             addCountryScatter(country);
         }
+        // only other option is the bar chart
         else {
-            // only other option is the bar chart
+            // check if country is already in plot
+            if (countryBar.includes(String(country))) {
+                return false;
+            }
             countryBar.push(country);
             updateBarChart();
         }

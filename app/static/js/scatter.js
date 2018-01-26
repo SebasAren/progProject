@@ -157,7 +157,7 @@ function addCountryScatter(country, addData=true) {
     else if (addData) countryScatter.push(String(country));
 
     // pass or continue doesn't work
-    else if (country == false)  1 + 1;
+    else if (country == false);
     else countryScatter.splice(countryScatter.indexOf(String(country)), 1);
 
     // get data and update domain
