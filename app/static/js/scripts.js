@@ -128,7 +128,7 @@ $(function() {
             $(document).mouseup(function(event) {
 
                 // get country
-                var country = $('.drag-div').html();
+                var country = $('.drag-div').attr('name');
                 $('.drag-div').remove();
                 pickController(country);
 
@@ -206,6 +206,7 @@ function dragController(clicked, country) {
         // it should be nested on the body and contain info on the country
         .appendTo($(document.body))
         .html('<img src="static/flags/' + reverseCountryConverter(clicked[0].classList[1]) + '.png"/>')
+        .attr('name', clicked[0].classList[1])
 
         // functions needed to control the new element
         .mousemove(function(event) {
