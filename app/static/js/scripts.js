@@ -8,7 +8,8 @@
 
 // list of buttons that need activity
 var buttons = ['map', 'left', 'right'];
-var countryConverter;
+var countryConverter,
+    reverseCountryConverter;
 var internetData,
     happyData,
     map;
@@ -30,6 +31,21 @@ $.getJSON('data/countryTable.json', function(data) {
             return twoCode;
         }
     };
+    reverseCountryConverter = function(threeCode) {
+        var twoCode;
+        $.each(data, function(country, nestedValues) {
+            if (threeCode == nestedValues.FIELD3) {
+                twoCode = nestedValues.FIELD2;
+                return false;
+            }
+        });
+        if (twoCode) {
+            return twoCode.toLowerCase();
+        }
+        else {
+            return threeCode;
+        }
+    }
 });
 
 
@@ -189,7 +205,7 @@ function dragController(clicked, country) {
 
         // it should be nested on the body and contain info on the country
         .appendTo($(document.body))
-        .html(clicked[0].classList[1])
+        .html('<img src="static/flags/' + reverseCountryConverter(clicked[0].classList[1]) + '.png"/>')
 
         // functions needed to control the new element
         .mousemove(function(event) {
