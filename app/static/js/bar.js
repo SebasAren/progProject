@@ -7,21 +7,6 @@
 
 'use strict';
 
-var x0Bar,
-    x1Bar,
-    y1Bar,
-    y2Bar,
-    countryBar,
-    marginBar,
-    widthBar,
-    heightBar,
-    svgBar,
-    tipBar,
-    colorBar;
-
-// container for data selections
-var dataBar = ['Nominal GDP', 'average broadband download'];
-
 // initializes the bar chart
 function initBarChart() {
     marginBar = {

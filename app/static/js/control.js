@@ -2,17 +2,12 @@
  * Sebastiaan Arendsen
  * 6060072
  *
- * All scripts used in the visualization are defined here.
+ * In this script file all functions are defined which have no 
+ * a global scope and are used to control the flow of the page.
+ * It also contains the on load function which will initialize all
+ * the visualizations.
  */
 'use strict';
-
-// list of buttons that need activity
-var buttons = ['map', 'left', 'right'];
-var countryConverter,
-    reverseCountryConverter;
-var internetData,
-    happyData,
-    map;
 
 // https://www.worldatlas.com/aatlas/ctycodes.htm
 $.getJSON('data/countryTable.json', function(data) {

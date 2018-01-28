@@ -6,20 +6,6 @@
 
 'use strict';
 
-var xScatter,
-    yScatter,
-    countryScatter,
-    marginScatter,
-    widthScatter,
-    heightScatter,
-    svgScatter,
-    tipScatter,
-    lineScatter,
-    colorScatter;
-
-var scatterHpi = 'hpi';
-var scatterInternet = 'average broadband download';
-
 function initScatterPlot() {
 
     // set margins for plot
