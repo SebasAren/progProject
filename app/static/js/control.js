@@ -102,6 +102,16 @@ $(function() {
         });
     });
 
+    $('#left').click(function() {
+        countryBar = countryScatter.slice();
+        updateBarChart();
+    })
+    $('#right').click(function() {
+        for (var i = 0; i < countryBar.length; i++) {
+            addCountryScatter(countryBar[i]);
+        }
+    })
+
     // triggered on mousedown on country in the datamap
     $('.datamaps-subunit').mousedown(function(event) {
 

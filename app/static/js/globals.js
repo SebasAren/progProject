@@ -41,6 +41,10 @@ var countryBar,
 // bar data selection and initialization
 var dataBar = ['Nominal GDP', 'average broadband download'];
 
+// scatter data selection and initialization
+var scatterInternet = 'average broadband download',
+    scatterHpi = 'hpi';
+
 // variables used in the scatter plot
 // scales
 var xScatter,

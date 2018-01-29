@@ -2,6 +2,9 @@
  *
  * Sebastiaan Arendsen
  * Programmeerproject
+ *
+ * This file contains all the functions controlling the scatter plot and
+ * the regression line. 
  */
 
 'use strict';
@@ -128,6 +131,12 @@ function addScatterData(internetIndex, happyIndex) {
         } 
         catch(error) {
             console.log('Country absent in one of the datasets (temp fix)');
+            $('#alert-box').addClass('alert alert-info')
+                .html(countryScatter[i] + ' was not available in this data set');
+            window.setTimeout(function() {
+                $('#alert-box').removeClass('alert alert-info')
+                    .html('');
+            }, 3000)
 
             // remove the country from the list
             countryScatter.splice(i, 1);
@@ -218,6 +227,7 @@ function changeDataScatter(changeInternetData=false, changeHpiData=false) {
     if (changeHpiData) scatterHpi = changeHpiData;
     addCountryScatter(false, false);
 }
+
 //https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
 function leastSquaresequation(XaxisData, Yaxisdata) {
     var ReduceAddition = function(prev, cur) { return prev + cur; };

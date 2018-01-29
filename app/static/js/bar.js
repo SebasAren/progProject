@@ -225,7 +225,12 @@ function updateData() {
             })
         }
         catch(error) {
-            console.log('works');
+            $('#alert-box').addClass('alert alert-info')
+                .html(countryBar[i] + ' was not available in this data set');
+            window.setTimeout(function() {
+                $('#alert-box').removeClass('alert alert-info')
+                    .html('')
+            }, 3000)
             countryBar.splice(i, 1);
         }
     }
