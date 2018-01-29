@@ -15,8 +15,8 @@ function initScatterPlot() {
     marginScatter = {
         top: 20,
         right: 130,
-        bottom: 30,
-        left: 40
+        bottom: 50,
+        left: 100,
     };
 
     // initialize tooltip
@@ -54,19 +54,23 @@ function initScatterPlot() {
     var yData = data.map(function(d) { return d.y; });
     var regression = leastSquaresequation(xData, yData);
 
+    // create line function
     lineScatter = d3.svg.line()
         .x(function(d) { return xScatter(d.x); })
-        .y(function(d) { return yScatter(regression(d.x)); })
+        .y(function(d) { return yScatter(regression(d.x)); });
 
+    // set domain of scatter plot
     xScatter.domain(d3.extent(data, function(d) {
         return +d.x;
-    }));
+    })).nice();
     yScatter.domain(d3.extent(data, function(d) {
         return +d.y;
-    }));
+    })).nice();
 
+    // set domain of colors
     colorScatter.domain(countryScatter);
 
+    // create line
     svgScatter.selectAll('path')
         .data([data])
         .enter().append('path')
@@ -81,7 +85,7 @@ function initScatterPlot() {
     svgScatter.append('g')
         .attr('class', 'x axis')
         .attr('transform', 'translate(0,' + heightScatter + ')')
-        .call(d3.svg.axis().scale(xScatter).orient('bottom'));
+        .call(d3.svg.axis().scale(xScatter).orient('bottom').ticks(5));
 
     // set y-axis
     svgScatter.append('g')
@@ -113,6 +117,20 @@ function initScatterPlot() {
         // remove country on click
         .on('click', function(d) { addCountryScatter(d.ISO, false); });
 
+    svgScatter.select('.x')
+        .append('text')
+        .attr('class', 'scatter-label')
+        .text(cleanText(scatterInternet))
+        .attr('text-anchor', 'end')
+        .attr('transform', 'translate(' + widthScatter + ',' + 40 +')');
+
+    svgScatter.select('.y')
+        .append('text')
+        .attr('class', 'scatter-label')
+        .text(cleanText(scatterHpi))
+        .attr('text-anchor', 'end')
+        .attr('transform', 'rotate(-90) translate(0,' + (-50) + ')');
+
 }
 
 function addScatterData(internetIndex, happyIndex) {
@@ -130,7 +148,6 @@ function addScatterData(internetIndex, happyIndex) {
             });
         } 
         catch(error) {
-            console.log('Country absent in one of the datasets (temp fix)');
             $('#alert-box').addClass('alert alert-info')
                 .html(countryScatter[i] + ' was not available in this data set');
             window.setTimeout(function() {
@@ -211,7 +228,7 @@ function addCountryScatter(country, addData=true) {
     svgScatter.select('.x.axis')
         .transition()
         .duration(750)
-        .call(d3.svg.axis().scale(xScatter).orient('bottom'));
+        .call(d3.svg.axis().scale(xScatter).orient('bottom').ticks(5));
 
     // update y-axis
     svgScatter.select('.y.axis')
@@ -219,6 +236,21 @@ function addCountryScatter(country, addData=true) {
         .duration(750)
         .call(d3.svg.axis().scale(yScatter).orient('left'));
 
+    svgScatter.selectAll('.scatter-label').remove();
+
+    svgScatter.select('.x')
+        .append('text')
+        .attr('class', 'scatter-label')
+        .text(cleanText(scatterInternet))
+        .attr('text-anchor', 'end')
+        .attr('transform', 'translate(' + widthScatter + ',' + 40 +')');
+
+    svgScatter.select('.y')
+        .append('text')
+        .attr('class', 'scatter-label')
+        .text(cleanText(scatterHpi))
+        .attr('text-anchor', 'end')
+        .attr('transform', 'rotate(-90) translate(0,' + (-50) + ')');
     svgScatter.select('.scatter-legend').call(d3.legend.color().scale(colorScatter).labels(countryScatter));
 }
 
@@ -228,7 +260,7 @@ function changeDataScatter(changeInternetData=false, changeHpiData=false) {
     addCountryScatter(false, false);
 }
 
-//https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
+// https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
 function leastSquaresequation(XaxisData, Yaxisdata) {
     var ReduceAddition = function(prev, cur) { return prev + cur; };
     

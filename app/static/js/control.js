@@ -1,6 +1,7 @@
 /* scripts.js
  * Sebastiaan Arendsen
  * 6060072
+ * Programmeerproject
  *
  * In this script file all functions are defined which have no 
  * a global scope and are used to control the flow of the page.
@@ -246,4 +247,11 @@ function pickController(country) {
     }
     // when visualization has been updated remove the hover "class"
     $('.hover-plot').removeClass('hover-plot');
+}
+
+// simple function to clean up text
+function cleanText(ugly) {
+    ugly = ugly.replace('_', ' ');
+    ugly = ugly[0].toUpperCase() + ugly.slice(1);
+    return ugly;
 }

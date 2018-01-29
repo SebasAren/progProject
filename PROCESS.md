@@ -35,3 +35,6 @@ Changed the drag function to actually drag something identifying the country. Th
 
 ## Sunday 28-1-2018
 Decided to move all the definitions of global variables to a single file to keep them under better control.
+
+## Monday 29-1-2018
+Today I fixed a lot of issues. I created an error handler which notifies the user when there is no data present of the country in a required dataset. I also gave all the plots a useful axis label. Tommorow I will probably create a function which will apply the correct units to the axis labels.

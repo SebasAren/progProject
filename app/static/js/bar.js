@@ -11,9 +11,9 @@
 function initBarChart() {
     marginBar = {
         top: 20,
-        right: 60,
+        right: 80,
         bottom: 70,
-        left: 60
+        left: 80
     };
 
     // initializes the tooltip
@@ -213,6 +213,22 @@ function updateBarChart() {
 
     svgBar.select('.y2').transition().duration(750)
         .call(d3.svg.axis().scale(y2Bar).orient('right'));
+
+    svgBar.selectAll('.bar-label').remove();
+
+    svgBar.select('.y1')
+        .append('text')
+        .attr('class', 'bar-label')
+        .attr('text-anchor', 'end')
+        .attr('transform', 'rotate(-90) translate(0,' + (-60) + ')')
+        .text(cleanText(dataBar[0]));
+
+    svgBar.select('.y2')
+        .append('text')
+        .attr('class', 'bar-label')
+        .attr('text-anchor', 'end')
+        .attr('transform', 'rotate(-90) translate(0,' + (80) + ')')
+        .text(cleanText(dataBar[1]));
 }
 
 function updateData() {

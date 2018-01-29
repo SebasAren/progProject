@@ -1,7 +1,9 @@
 /* map.js
  * Sebastiaan Arendsen
- * Programmeerproject *
- * Contains functions to control the datamap
+ * 6060072
+ * Programmeerproject
+ *
+ * Contains functions to control the datamap and update it's color.
  */
 
 'use strict';
@@ -33,7 +35,7 @@ function addDataToMap(dataIndex) {
 
     // remake the legend
     var mapLegend = {
-        legendTitle: dataIndex,
+        legendTitle: cleanText(dataIndex),
         defaultFillName: 'No data',
         labels: {}
     };
