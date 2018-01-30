@@ -116,7 +116,8 @@ function updateBarChart() {
     })]);
 
     // update legend for the bar chart
-    svgBar.select('.bar-legend').call(d3.legend.color().scale(x1Bar).labels(dataBar));
+    svgBar.select('.bar-legend').call(d3.legend.color().scale(x1Bar)
+        .labels([cleanText(dataBar[0]), cleanText(dataBar[1])]));
 
     // update color of the legend
     $.each($('#bar').find('.swatch'), function(i, _) {
@@ -227,7 +228,7 @@ function updateBarChart() {
         .append('text')
         .attr('class', 'bar-label')
         .attr('text-anchor', 'end')
-        .attr('transform', 'rotate(-90) translate(0,' + (80) + ')')
+        .attr('transform', 'rotate(-90) translate(0,' + (70) + ')')
         .text(cleanText(dataBar[1]));
 }
 

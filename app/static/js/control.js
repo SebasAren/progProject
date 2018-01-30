@@ -251,7 +251,47 @@ function pickController(country) {
 
 // simple function to clean up text
 function cleanText(ugly) {
-    ugly = ugly.replace('_', ' ');
-    ugly = ugly[0].toUpperCase() + ugly.slice(1);
+    if (ugly == 'average broadband download') {
+        ugly = 'Average Broadband Download (kbit/s)';
+    }
+    if (ugly == 'average broadband upload') {
+        ugly = 'Average Broadband Upload (kbit/s)';
+    }
+    if (ugly == 'average mobile download') {
+        ugly = 'Average Mobile Download (kbit/s)';
+    }
+    if (ugly == 'ping') {
+        ugly = 'Latency (ms)';
+    }
+    if (ugly == 'Nominal GDP') {
+        ugly = 'Total Nominal GDP (Million $)';
+    }
+    if (ugly == 'Level of literacy') {
+        ugly = 'Level of Literacy (%)';
+    }
+    if (ugly == 'Democracy Index') {
+        ugly = 'Democracy Index (1-10)';
+    }
+    if (ugly == 'Years of Schooling') {
+        ugly = 'Years of Schooling (years)';
+    }
+    if (ugly == 'Urbanization rate') {
+        ugly = 'Urbanization rate (%)';
+    }
+    if (ugly == 'hpi') {
+        ugly = 'Happy Planet Index';
+    }
+    if (ugly == 'ecological footprint') {
+        ugly = 'Ecological Footprint';
+    }
+    if (ugly == 'inequality') {
+        ugly = 'Inequality';
+    }
+    if (ugly == 'life expectancy') {
+        ugly = 'Life Expectancy (Years)';
+    }
+    if (ugly == 'wellbeing') {
+        ugly = 'Wellbeing';
+    }
     return ugly;
 }
