@@ -16,14 +16,14 @@ function initScatterPlot() {
         top: 20,
         right: 130,
         bottom: 50,
-        left: 100,
+        left: 70,
     };
 
     // initialize tooltip
     tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
         var rv = '<b>Country: </b>' + d.ISO + '<br><b>x: </b>' + d.x + '<br><b>y: </b>' + d.y;
         return rv;
-    })
+    });
 
     // set width and height of plot
     widthScatter = $('#scatter').width() - marginScatter.left - marginScatter.right;
@@ -54,11 +54,6 @@ function initScatterPlot() {
     var yData = data.map(function(d) { return d.y; });
     var regression = leastSquaresequation(xData, yData);
 
-    // create line function
-    lineScatter = d3.svg.line()
-        .x(function(d) { return xScatter(d.x); })
-        .y(function(d) { return yScatter(regression(d.x)); });
-
     // set domain of scatter plot
     xScatter.domain(d3.extent(data, function(d) {
         return +d.x;
@@ -66,6 +61,11 @@ function initScatterPlot() {
     yScatter.domain(d3.extent(data, function(d) {
         return +d.y;
     })).nice();
+
+    // create line function
+    lineScatter = d3.svg.line()
+        .x(function(d) { return xScatter(d.x); })
+        .y(function(d) { return yScatter(regression(d.x)); });
 
     // set domain of colors
     colorScatter.domain(countryScatter);
@@ -281,8 +281,8 @@ function leastSquaresequation(XaxisData, Yaxisdata) {
     var intercept = yBar - (xBar * slope);
     
 // returning regression function
-    return function(x){
+    return function(x) {
       return x*slope+intercept;
     }
 
-  }
+}
