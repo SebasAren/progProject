@@ -1,3 +1,11 @@
+/* main.css
+ * Sebastiaan Arendsen
+ * 6060072
+ * Programmeerproject
+ *
+ * Additional css file for the project.
+ */
+
 body {
     padding: 10px;
     /* Disable user text select, as this broke the drag function */
@@ -13,21 +21,17 @@ button {
 }
 #map {
     position: center;
-    width: 80%;
-    height: 70%;
+    width: 90%;
+    padding: 5px;
 }
 .plot {
     float: left;
     width: 50%;
     height 500px;
 }
-.plot img {
-    width: 100%;
-    position: top;
-}
 .plot svg {
     width: 100%;
-    height: 600px;
+    height: 550px;
     position: top;
 }
 .hover-plot {
@@ -50,11 +54,11 @@ button {
 }
 .bar-label,
 .scatter-label {
-    font-family: serif;
+    font-family: sans-serif;
 }
 .dot {
     stroke: #293b47;
-    fill: #7A99Ac;
+    /*fill: #7A99Ac;*/
 }
 .line {
     stroke: #E4002B;

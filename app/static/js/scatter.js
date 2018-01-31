@@ -1,6 +1,6 @@
 /* scatter.js
- *
  * Sebastiaan Arendsen
+ * 6060072
  * Programmeerproject
  *
  * This file contains all the functions controlling the scatter plot and

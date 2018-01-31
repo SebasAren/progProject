@@ -1,8 +1,9 @@
-/* Sebastiaan Arendsen
+/* bar.js
+ * Sebastiaan Arendsen
  * 6060072
  * Programmeerproject
  *
- * Contains functions to control the grouped bar chart
+ * Contains functions to control the grouped bar chart.
  */
 
 'use strict';

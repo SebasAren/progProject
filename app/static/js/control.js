@@ -1,4 +1,4 @@
-/* scripts.js
+/* control.js
  * Sebastiaan Arendsen
  * 6060072
  * Programmeerproject

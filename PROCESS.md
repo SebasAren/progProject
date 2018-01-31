@@ -40,4 +40,7 @@ Decided to move all the definitions of global variables to a single file to keep
 Today I fixed a lot of issues. I created an error handler which notifies the user when there is no data present of the country in a required dataset. I also gave all the plots a useful axis label. Tommorow I will probably create a function which will apply the correct units to the axis labels.
 
 ## Tuesday 30-1-2018
-I fixed some
+I fixed a lot of small bugs and ugly things. Made the axis labels a lot nicer to read.
+
+## Wednesday 31-1-2018
+Worked on information display in the form of a modal which is now functional. I also tried to fix the large white space under the map, but this was a lot harder than I anticipated. Apparently the Bootstrap 'container' class which was needed to make the tooltip stick to the correct position doesn't like to be scaled by the user. Will have to rethink how I will fix this.
