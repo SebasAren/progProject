@@ -251,47 +251,21 @@ function pickController(country) {
 
 // simple function to clean up text
 function cleanText(ugly) {
-    if (ugly == 'average broadband download') {
-        ugly = 'Average Broadband Download (kbit/s)';
+    var convert = {
+        'average broadband download': 'Average Broadband Download (kbit/s)',
+        'average broadband upload': 'Average Broadband Upload (kbit/s)',
+        'average mobile download': 'Average Mobile Download (kbit/s)',
+        'ping': 'Latency (ms)',
+        'Nominal GDP': 'Total Nominal GDP (Million $)',
+        'Level of literacy': 'Level of Literacy (%)',
+        'Democracy Index': 'Democracy Index (1-10)',
+        'Year of Schooling': 'Year of Schooling (years)',
+        'Urbanization rate': 'Urbanization rate (%)',
+        'hpi': 'Happy Planet Index',
+        'ecological footprint': 'Ecological Footprint',
+        'inequality': 'Inequality',
+        'life expectancy': 'Life Expectancy (Years)',
+        'wellbeing': 'Wellbeing',
     }
-    if (ugly == 'average broadband upload') {
-        ugly = 'Average Broadband Upload (kbit/s)';
-    }
-    if (ugly == 'average mobile download') {
-        ugly = 'Average Mobile Download (kbit/s)';
-    }
-    if (ugly == 'ping') {
-        ugly = 'Latency (ms)';
-    }
-    if (ugly == 'Nominal GDP') {
-        ugly = 'Total Nominal GDP (Million $)';
-    }
-    if (ugly == 'Level of literacy') {
-        ugly = 'Level of Literacy (%)';
-    }
-    if (ugly == 'Democracy Index') {
-        ugly = 'Democracy Index (1-10)';
-    }
-    if (ugly == 'Years of Schooling') {
-        ugly = 'Years of Schooling (years)';
-    }
-    if (ugly == 'Urbanization rate') {
-        ugly = 'Urbanization rate (%)';
-    }
-    if (ugly == 'hpi') {
-        ugly = 'Happy Planet Index';
-    }
-    if (ugly == 'ecological footprint') {
-        ugly = 'Ecological Footprint';
-    }
-    if (ugly == 'inequality') {
-        ugly = 'Inequality';
-    }
-    if (ugly == 'life expectancy') {
-        ugly = 'Life Expectancy (Years)';
-    }
-    if (ugly == 'wellbeing') {
-        ugly = 'Wellbeing';
-    }
-    return ugly;
+    return convert[ugly];
 }

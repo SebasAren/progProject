@@ -21,7 +21,7 @@ function initScatterPlot() {
 
     // initialize tooltip
     tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>Country: </b>' + d.ISO + '<br><b>x: </b>' + d.x + '<br><b>y: </b>' + d.y;
+        var rv = '<b>Country: </b>' + d.ISO + '<br><b>' + cleanText(scatterInternet) + ': </b>' + d.x + '<br><b>' + cleanText(scatterHpi) + ': </b>' + d.y;
         return rv;
     });
 

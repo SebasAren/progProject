@@ -18,7 +18,7 @@ function initBarChart() {
 
     // initializes the tooltip
     tipBar = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>' + d.label + ': </b>' + d.value;
+        var rv = '<b>' + cleanText(d.label) + ': </b>' + d.value;
         return rv;
     });
 
