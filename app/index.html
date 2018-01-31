@@ -15,14 +15,41 @@
         <script src="static/js/control.js"></script>
         <script src="static/js/scatter.js"></script>
         <script src="static/js/map.js"></script>
-        <script src="static/js/bar.js"></script> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+        <script src="static/js/bar.js"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"/>
         <link href="static/css/main.css" rel="stylesheet">
     </head>
     <body>
         <div class="jumbotron text-center">
             <h1>Internet connectivity around the world</h1>
-            <p>Economic factors</p>
+            <button tpye="button" class="btn modal-button btn-lg" data-toggle="modal" data-target="#infoModal">Usage information</button>
+            <div id="infoModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Information</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>In this visualization you can see the ways in which the quality of internet connections can be a good estimate for the overall economic situation in a country.</p>
+                            <p>Besides economic factors you can also take a look at factors used by the Happy Planet Index and potential correlations between internet quality and these indexes.</p>
+                            <h5>Data</h5>
+                            <ul class="text-left">
+                                <li>Various internet quality parameters</li>
+                                <li>Nominal GDP: </li>
+                            </ul>
+                            <h5>Usage</h5>
+                            <p>You can drag and drop countries from the datamap to the individual plots. You can change the information displayed by pressing the buttons. You can also move countries between plots by pressing the arrow buttons. Deleting items from the plots is done by clicking the respective datapoint or bar.</p>
+                            <h5>Sources</h5>
+                            <p><a href="https://theinclusiveinternet.eiu.com/">Inclusive Internet Data</a><br>
+                            <a href="https://happyplanetindex.org/">Happy Planet Index</a></p>
+                            <h5>Created by</h5>
+                            <p>Sebastiaan Arendsen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container">
         <div class="container-fluid btn-group-lg text-center">
@@ -32,13 +59,14 @@
             <button type="button" class="btn map-btn" name="ping">Latency</button>
         </div>
         <!--Container for the data map-->
-        <div class="container-fluid" id="map"></div>
+        <div class="container" id="map"></div>
+        <div class="alert alert-info container text-center">Drag and drop countries from the map to the graph of your choice</div>
+        <div class="container text-center" id="alert-box"></div>
         <!--Buttons for equalizing the data used in the plots-->
         <div class="container-fluid text-center">
             <button class="btn btn-default" id="left"><<</button>
             <button class="btn btn-default" id="right">>></button>
         </div>
-        <div class="container text-center" id="alert-box"></div>
         <!--Below this will be the containers for the linked plots-->
         <div class="container-fluid">
             <div class="container plot left-plot">

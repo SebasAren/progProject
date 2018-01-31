@@ -228,7 +228,7 @@ function updateBarChart() {
         .append('text')
         .attr('class', 'bar-label')
         .attr('text-anchor', 'end')
-        .attr('transform', 'rotate(-90) translate(0,' + (70) + ')')
+        .attr('transform', 'rotate(-90) translate(0,' + (72) + ')')
         .text(cleanText(dataBar[1]));
 }
 
@@ -242,10 +242,10 @@ function updateData() {
             })
         }
         catch(error) {
-            $('#alert-box').addClass('alert alert-info')
+            $('#alert-box').addClass('alert alert-danger')
                 .html(countryBar[i] + ' was not available in this data set');
             window.setTimeout(function() {
-                $('#alert-box').removeClass('alert alert-info')
+                $('#alert-box').removeClass('alert alert-danger')
                     .html('')
             }, 3000)
             countryBar.splice(i, 1);

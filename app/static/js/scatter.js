@@ -148,10 +148,10 @@ function addScatterData(internetIndex, happyIndex) {
             });
         } 
         catch(error) {
-            $('#alert-box').addClass('alert alert-info')
+            $('#alert-box').addClass('alert alert-danger')
                 .html(countryScatter[i] + ' was not available in this data set');
             window.setTimeout(function() {
-                $('#alert-box').removeClass('alert alert-info')
+                $('#alert-box').removeClass('alert alert-danger')
                     .html('');
             }, 3000)
 
