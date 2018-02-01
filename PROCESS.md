@@ -44,3 +44,6 @@ I fixed a lot of small bugs and ugly things. Made the axis labels a lot nicer to
 
 ## Wednesday 31-1-2018
 Worked on information display in the form of a modal which is now functional. I also tried to fix the large white space under the map, but this was a lot harder than I anticipated. Apparently the Bootstrap 'container' class which was needed to make the tooltip stick to the correct position doesn't like to be scaled by the user. Will have to rethink how I will fix this.
+
+## Thursday 01-2-2018
+Today I worked to fix all the deadline requirements. No coding happened.
