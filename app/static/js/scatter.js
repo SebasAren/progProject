@@ -9,6 +9,9 @@
 
 'use strict';
 
+/* Function to initialize the scatter plot.
+ * Will render a complete scatter plot with a regression line.
+ */
 function initScatterPlot() {
 
     // set margins for plot
@@ -21,7 +24,8 @@ function initScatterPlot() {
 
     // initialize tooltip
     tipScatter = d3.tip().attr('class', 'd3-tip text-center').html(function(d) {
-        var rv = '<b>Country: </b>' + d.ISO + '<br><b>' + cleanText(scatterInternet) + ': </b>' + d.x + '<br><b>' + cleanText(scatterHpi) + ': </b>' + d.y;
+        var rv = '<b>Country: </b>' + d.ISO + '<br><b>' + cleanText(scatterInternet) 
+            + ': </b>' + d.x + '<br><b>' + cleanText(scatterHpi) + ': </b>' + d.y;
         return rv;
     });
 
@@ -117,6 +121,7 @@ function initScatterPlot() {
         // remove country on click
         .on('click', function(d) { addCountryScatter(d.ISO, false); });
 
+    // write axis labels
     svgScatter.select('.x')
         .append('text')
         .attr('class', 'scatter-label')
@@ -133,6 +138,9 @@ function initScatterPlot() {
 
 }
 
+/* Adds data to the scatter plot.
+ * Will also trigger the alert when data is unavailable.
+ */
 function addScatterData(internetIndex, happyIndex) {
 
     // create data container
@@ -147,6 +155,7 @@ function addScatterData(internetIndex, happyIndex) {
                 'ISO': countryScatter[i]
             });
         } 
+        // error handler when data isn't present
         catch(error) {
             $('#alert-box').addClass('alert alert-danger')
                 .html(countryScatter[i] + ' was not available in this data set');
@@ -162,6 +171,11 @@ function addScatterData(internetIndex, happyIndex) {
     return data;
 }
 
+/* Actual update function which changes the plot.
+ * country is the Country which will be added.
+ * addData is false when no country is added, but only a change of data
+ * selection.
+ */
 function addCountryScatter(country, addData=true) {
     
     // decide what to do when calling this function
@@ -183,17 +197,22 @@ function addCountryScatter(country, addData=true) {
     var yData = data.map(function(d) { return d.y; });
     var regression = leastSquaresequation(xData, yData);
 
+    // set the scatter line function
     lineScatter.x(function(d) { return xScatter(d.x); })
         .y(function(d) { return yScatter(regression(d.x)); });
 
-    
+    // create teh line element
     var lineElement = svgScatter.selectAll('path').data([data]);
+
+    // remove the old line
     lineElement.exit().remove().transition().duration(750);
 
+    // update existing line
     lineElement
         .transition().duration(750)
         .attr('d', lineScatter);
 
+    // add new line
     lineElement.enter().append('path')   
         .transition().duration(750)
         .attr('class', 'line')
@@ -236,8 +255,10 @@ function addCountryScatter(country, addData=true) {
         .duration(750)
         .call(d3.svg.axis().scale(yScatter).orient('left'));
 
+    // remove old axis labels
     svgScatter.selectAll('.scatter-label').remove();
 
+    // add new x-label
     svgScatter.select('.x')
         .append('text')
         .attr('class', 'scatter-label')
@@ -245,6 +266,7 @@ function addCountryScatter(country, addData=true) {
         .attr('text-anchor', 'end')
         .attr('transform', 'translate(' + widthScatter + ',' + 40 +')');
 
+    // add new y-label
     svgScatter.select('.y')
         .append('text')
         .attr('class', 'scatter-label')
@@ -254,13 +276,17 @@ function addCountryScatter(country, addData=true) {
     svgScatter.select('.scatter-legend').call(d3.legend.color().scale(colorScatter).labels(countryScatter));
 }
 
+/* Simple function to decide what to update.
+ */
 function changeDataScatter(changeInternetData=false, changeHpiData=false) {
     if (changeInternetData) scatterInternet = changeInternetData;
     if (changeHpiData) scatterHpi = changeHpiData;
     addCountryScatter(false, false);
 }
 
-// https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
+/* https://bl.ocks.org/nanu146/de5bd30782dfe18fa5efa0d8d299abce
+ * This is a literal copy.
+ */
 function leastSquaresequation(XaxisData, Yaxisdata) {
     var ReduceAddition = function(prev, cur) { return prev + cur; };
     
@@ -280,9 +306,8 @@ function leastSquaresequation(XaxisData, Yaxisdata) {
     var slope = MeanDiffXY / SquareXX;
     var intercept = yBar - (xBar * slope);
     
-// returning regression function
+    // returning regression function
     return function(x) {
-      return x*slope+intercept;
+        return x*slope+intercept;
     }
-
 }

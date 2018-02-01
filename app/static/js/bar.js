@@ -8,8 +8,12 @@
 
 'use strict';
 
-// initializes the bar chart
+/* Function to initialize the bar chart.
+ * Uses the update function to fill it initially.
+ */
 function initBarChart() {
+
+    // set margins
     marginBar = {
         top: 20,
         right: 80,
@@ -81,7 +85,10 @@ function initBarChart() {
     updateBarChart();
 }
 
-// function to update the bar chart
+/* Functoin to update the bar chart.
+ * Fuixes everything for adding or deleting data 
+ * and adding and removing countries.
+ */
 function updateBarChart() {
 
     // get new data based on user selection
@@ -215,8 +222,10 @@ function updateBarChart() {
     svgBar.select('.y2').transition().duration(750)
         .call(d3.svg.axis().scale(y2Bar).orient('right'));
 
+    // remove old bar labels
     svgBar.selectAll('.bar-label').remove();
 
+    // add label to first y-axis
     svgBar.select('.y1')
         .append('text')
         .attr('class', 'bar-label')
@@ -224,6 +233,7 @@ function updateBarChart() {
         .attr('transform', 'rotate(-90) translate(0,' + (-60) + ')')
         .text(cleanText(dataBar[0]));
 
+    // add label to second y-axis
     svgBar.select('.y2')
         .append('text')
         .attr('class', 'bar-label')
@@ -232,6 +242,9 @@ function updateBarChart() {
         .text(cleanText(dataBar[1]));
 }
 
+/* Function to update the data in the barchart.
+ * This will also throw an error when data isn't available.
+ */
 function updateData() {
     var data = [];
     for (var i = 0; i < countryBar.length; i++) {
@@ -254,6 +267,7 @@ function updateData() {
     return data;
 }
 
+// update the actual value used in the plot
 function valueBarUpdate(currentCountry) {
     var rv = [];
     for (var i = 0; i < dataBar.length; i++) {

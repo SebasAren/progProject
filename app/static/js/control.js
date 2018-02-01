@@ -12,6 +12,8 @@
 
 // https://www.worldatlas.com/aatlas/ctycodes.htm
 $.getJSON('data/countryTable.json', function(data) {
+
+    // function to convert 2-codes to 3 codes
     countryConverter = function(twoCode) {
         var threeCode;
             $.each(data, function(country, nestedValues) {
@@ -27,6 +29,8 @@ $.getJSON('data/countryTable.json', function(data) {
             return twoCode;
         }
     };
+
+    // reverse function of countryConverter
     reverseCountryConverter = function(threeCode) {
         var twoCode;
         $.each(data, function(country, nestedValues) {
@@ -45,11 +49,11 @@ $.getJSON('data/countryTable.json', function(data) {
 });
 
 
-// jquery version of on window load
+/* jQuery version of on window load
+ * 
+ * Everything in this function will be executed on load of the DOM.
+ */
 $(function() {    
-    // disable 'right-mouse menu' to use right mouse button later
-    // document.oncontextmenu = function() { return false; };
-
     // init the map
     map = new Datamap({
         element: document.getElementById('map'),
@@ -103,10 +107,12 @@ $(function() {
         });
     });
 
+    // listener for << button
     $('#left').click(function() {
         countryBar = countryScatter.slice();
         updateBarChart();
     })
+    // listener for > button
     $('#right').click(function() {
         for (var i = 0; i < countryBar.length; i++) {
             addCountryScatter(countryBar[i]);

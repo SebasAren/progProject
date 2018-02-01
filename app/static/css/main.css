@@ -17,14 +17,17 @@ body {
     user-select: none;
 }
 button {
+    /*make the cursor a pointer when on the buttons*/
     cursor: pointer;
 }
 #map {
+    /*styling for the map, mainly positioning*/
     position: center;
     width: 90%;
     padding: 5px;
 }
 .plot {
+    /*settings for the plots */
     float: left;
     width: 50%;
     height 500px;
@@ -35,9 +38,11 @@ button {
     position: top;
 }
 .hover-plot {
+    /*selection outline for the plot*/
     outline: #00FF00 dotted thick;
 }
 .drag-div {
+    /* settings for the draggable */
     width: 300px;
     height: 300px;
     position: absolute;
@@ -48,17 +53,19 @@ button {
 }
 .axis path,
 .axis line {
+    /* fixing the axis style */
     fill: none;
     stroke: black;
     shape-rendering: crispEdges;
 }
 .bar-label,
 .scatter-label {
+    /* labels on the axes */
     font-family: sans-serif;
+    font-weight: bold;
 }
 .dot {
     stroke: #293b47;
-    /*fill: #7A99Ac;*/
 }
 .line {
     stroke: #E4002B;

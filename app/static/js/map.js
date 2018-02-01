@@ -8,10 +8,13 @@
 
 'use strict';
 
-// this will always show data from the global datasource internetData
+/* Function to add data to the map.
+ * It updates the legend, creates a new scale and 
+ * adds the new data.
+ */
 function addDataToMap(dataIndex) {
 
-    // datacontainer
+    // data container
     var plotData = {};
 
     // loop over the original dataset to fix the data format and find minMax
@@ -61,6 +64,7 @@ function addDataToMap(dataIndex) {
     map.legend(mapLegend);
 }
 
+/* Function that adds calcuates the scale and returns it*/
 var setMapScale = function(dataIndex) {
 
     // ES6 version of python range()
