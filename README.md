@@ -20,12 +20,8 @@ The way I want to provide this information is by making a datamap of the orld  w
 
 ## Prerequisites
 ### Data sources
-* [Internet access data](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=isoc_ci_it_en2&lang=en)
-    * This data will need to be filtered and processed to be useable.
 * [More internet access data](https://theinclusiveinternet.eiu.com/explore/countries/performance)
     * Really clean and varied data on internet usage and quality in countries.
-* [GDP](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD)
-    * One example of economic data. Is easily useable.
 * [Happy Planet Index](http://happyplanetindex.org/countries)
 
 ### External components

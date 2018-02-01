@@ -1,6 +1,7 @@
 /* globals.js 
  * Sebastiaan Arendsen
  * 6060072
+ * Programmeerproject
  *
  * In this file all the globally used variables are defined. This is
  * done so it is easier to keep track of names used and avoid

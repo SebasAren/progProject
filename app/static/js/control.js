@@ -116,32 +116,23 @@ $(function() {
     // triggered on mousedown on country in the datamap
     $('.datamaps-subunit').mousedown(function(event) {
 
-        // planned to make additional functionality for the right-mouse button
-        // will now block right mouse from triggering drag functionallity
-        if (event.button == 2) {
-            // TODO: create a tooltip with a link to wikipedia?
+        // control the drag behaviour of the 'map element'
+        dragController($(this), event);
 
-        }
+        // remove mouseup listener from document to stop double triggers
+        $(document).off('mouseup');
 
-        else {
-            // control the drag behaviour of the 'map element'
-            dragController($(this), event);
+        // reapply mouseup listener
+        $(document).mouseup(function(event) {
 
-            // remove mouseup listener from document to stop double triggers
+            // get country
+            var country = $('.drag-div').attr('name');
+            $('.drag-div').remove();
+            pickController(country);
+
+            // remove listener again
             $(document).off('mouseup');
-
-            // reapply mouseup listener
-            $(document).mouseup(function(event) {
-
-                // get country
-                var country = $('.drag-div').attr('name');
-                $('.drag-div').remove();
-                pickController(country);
-
-                // remove listener again
-                $(document).off('mouseup');
-            });
-        }
+        });
     });
 }); 
 

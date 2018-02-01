@@ -44,7 +44,6 @@ function initBarChart() {
 
     // setup color scaling
     colorBar = d3.scale.ordinal()
-        // TODO: make this a colorbrewer color
         .range(['#ca0020','#f4a582']);
 
     // setup svg with margins
