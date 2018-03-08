@@ -2,7 +2,7 @@
 Name: Sebastiaan Arendsen
 
 ## Links
-[Github page](https://flewtje.github.io/progProject/app/index.html)
+[Github page](https://SebasAren.github.io/progProject/app/index.html)
 [Youtube Video](https://youtu.be/fcqf2oT0lbo)
 ### Data sources
 [Happy Planet Index](https://happyplanetindex.org/)
